@@ -1,6 +1,6 @@
 # Generative AI for Economic Research Website
 
-This is the source code for the companion site ([genaiforecon.com](genaiforecon.com)) for the article "Generative AI for Economic Research: Use Cases and Implications for Economists" by Anton Korinek, published in the _Journal of Economic Literature_ in December 2023 and updated quarterly (through the end of 2025).
+This is the source code for the companion site ([genaiforecon.com](genaiforecon.com)) for the article "Generative AI for Economic Research: Use Cases and Implications for Economists" by Anton Korinek, published in the _Journal of Economic Literature_ in December 2023 and updated every 6 months (through the end of 2025).
 
 Most of the relevant content can be found in files contained within the subs folder. 
 
