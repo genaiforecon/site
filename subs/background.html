@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Applications of LLMs – Generative AI for Economic Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fad5ab29a14bbe0a7a7d29177f3f13bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" type="text/css" href="expandable.css">
+<script src="expandable.js"></script>
+<script src="references1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Generative AI for Economic Research</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../get-started.html"> 
+<span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-new-developments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">New Developments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-new-developments">    
+        <li>
+    <a class="dropdown-item" href="../subs/overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/reasoning.html">
+ <span class="dropdown-text">Reasoning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/access.html">
+ <span class="dropdown-text">Access Modes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/search.html">
+ <span class="dropdown-text">Search</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/improvements.html">
+ <span class="dropdown-text">Technical Improvements</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/practical.html">
+ <span class="dropdown-text">Practical Applications</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-applications" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Applications</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-applications">    
+        <li>
+    <a class="dropdown-item" href="../applications.html">
+ <span class="dropdown-text">Summary</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/ideation.html">
+ <span class="dropdown-text">Ideation and Feedback</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/writing.html">
+ <span class="dropdown-text">Writing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/background.html">
+ <span class="dropdown-text">Background Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/coding.html">
+ <span class="dropdown-text">Coding</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/data.html">
+ <span class="dropdown-text">Data Analytics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/math.html">
+ <span class="dropdown-text">Mathematical Derivations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/promoting.html">
+ <span class="dropdown-text">Promoting Research</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../resources.html"> 
+<span class="menu-text">Further Resources</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/genaiforecon/site"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#summarization" id="toc-summarization" class="nav-link active" data-scroll-target="#summarization">Summarization</a></li>
+  <li><a href="#literature-research" id="toc-literature-research" class="nav-link" data-scroll-target="#literature-research">Literature Research</a></li>
+  <li><a href="#background-internet-research" id="toc-background-internet-research" class="nav-link" data-scroll-target="#background-internet-research">Background Internet Research</a></li>
+  <li><a href="#formatting-references" id="toc-formatting-references" class="nav-link" data-scroll-target="#formatting-references">Formatting References</a></li>
+  <li><a href="#translating-text" id="toc-translating-text" class="nav-link" data-scroll-target="#translating-text">Translating Text</a></li>
+  <li><a href="#explaining-concepts" id="toc-explaining-concepts" class="nav-link" data-scroll-target="#explaining-concepts">Explaining Concepts</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Applications of LLMs</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="expandable-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start_minimal">
+            There are a variety of tasks that researchers perform in order to conduct background research and learn about both existing and new work in their research area. These include summarizing text, searching relevant literature, seeking to understand new concepts, and translating text from other languages.
+        </span>
+        <span class="prompt_rest_minimal inline-expand" id="content1718">
+            Advances in background research have derived primarily from the capacity of frontier LLMs to process larger and larger amounts of text in their context window. This enables cutting-edge systems to process multiple academic papers or books and even YouTube videos with growing accuracy. However, when performing literature reviews, LLMs still struggle with synthesizing the state of the art on a given research topic.
+        </span>
+        <a href="#" class="expandable-toggle-minimal" data-target="content1718">[+]</a>
+    </div>
+</div>
+
+
+<section id="summarization" class="level2">
+<h2 class="anchored" data-anchor-id="summarization">Summarization</h2>
+<p>First, LLMs are very capable at summarizing. They are adept at extracting the most relevant content from a passage of text, as illustrated here:</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b> Prompt: </b> Summarize the following text in one sentence: <b>[Abstract of this paper from earlier Chat inserted]</b> </span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"> <b> Response (GPT-4): </b> </div>
+    <a href="#" class="expandable-toggle" data-target="content18">[+] click to expand</a>
+    <div id="content18" class="response_rest">
+        The author discusses the potential of Generative AI, specifically large language models like ChatGPT, to revolutionize research in various domains such as ideation, writing, data analysis, coding, and mathematics, and suggests that economists can significantly increase productivity by automating micro tasks with AI, with the performance of these systems expected to improve over time.
+    </div>
+</div>
+
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"> <b> Analysis: </b> The summary sentence it provided covers all the important bases. </span>
+    </div>
+</div>
+<p>
+Both Claude and ChatGPT have now a sufficiently large context window to process entire academic papers as well as many books. To provide an example, I used the "Upload" button to feed the original Feb 2023 NBER working paper version of this paper <span class="reference" id="korinek23GenAI" style="p"></span> into Claude 2 and asked for a short summary -- "short" in order to not take up too much space here: 
+</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b> Prompt: </b> Provide a short summary of this paper. <b>[Attachment: w30957.pdf]</b></span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"> <b> Response (Claude 2): </b> </div>
+    <a href="#" class="expandable-toggle" data-target="content20">[+] click to expand</a>
+    <div id="content19" class="response_rest">
+        <p>This paper describes how large language models (LLMs) like ChatGPT are starting to display useful capabilities across a range of research tasks in economics. The author categorizes 25 potential use cases into six domains: ideation, writing, background research, data analysis, coding, and mathematical derivations. For each domain, the paper provides instructions and examples to demonstrate current LLM abilities, rating them on a scale from experimental to highly useful. The author argues LLMs can help automate micro tasks and increase researcher productivity in the short run. In the long run, the paper speculates cognitive automation via LLMs may have profound implications for economic research and the value of human cognitive labor.</p>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"> <b> Analysis: </b> The long context window of Claude implies that it can keep the entire text of a typical paper in its working memory. </span>
+    </div>
+</div>
+
+<!-- Add space after the analysis box -->
+
+<p>The model can respond to follow-up questions on the content, going into significant detail on the text provided.</p>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start">Additional examples of useful prompts</span>
+        <span class="prompt_rest inline-expand" id="content1920">
+            <ul>
+                <li>What is the evidence supporting these points [or a specific point from the summary]?</li>
+                <li>What are the author's main conclusions?</li>
+                <li>What are the most interesting (or most novel) ideas in this paper?</li>
+                <li>Can you explain the main findings of section [enter number]?</li>
+            </ul>
+        </span>
+        <a href="#" class="expandable-toggle2" data-target="content1920">[+] click to expand</a>
+    </div>
+</div>
+
+<p>Claude allows the user to upload up to five documents and to ask the LLM to perform tasks such as comparing them or identifying connections between them.</p>
+<p>Google DeepMind’s Gemini has the capacity to digest YouTube videos if the corresponding extension is activated in the settings of Gemini.</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b> Prompt: </b> Provide a one-paragraph summary of this: <a href="https://www.youtube.com/watch?v=sjL6Gl6ZIqs" target="_blank">https://www.youtube.com/watch?v=sjL6Gl6ZIqs</a> </span>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"> <b> Response (Gemini): </b> </div>
+    <a href="#" class="expandable-toggle" data-target="content20">[+] click to expand</a>
+    <div id="content20" class="response_rest">
+        <p>This video is about a new large language model, Claude 3 Opus, created by Anthropic. In the video, the creators test Claude 3 Opus's ability to analyze the world economy. The video shows that Claude 3 Opus can access and process information from the web using a tool called web view. It can then use this information to answer questions and complete tasks. For example, the video shows that Claude 3 Opus can generate a graph of US GDP trends and predict future GDP growth. The video also shows that Claude 3 Opus can break down complex problems into subproblems and distribute the work among other versions of itself, which is called dispatch sub agents. This allows Claude 3 Opus to analyze the economies of multiple countries simultaneously. Overall, the video demonstrates that Claude 3 Opus is a powerful tool that can be used to analyze complex economic data.</p>
+    </div>
+</div>
+</div> 
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"> <b> Analysis: </b> The summary provided is excellent. This new capability makes it possible to streamline the lengthy process of retrieving information from videos in a much simpler form, providing new sources of information for economic research. </span>
+    </div>
+</div>
+
+</section>
+<section id="literature-research" class="level2">
+<h2 class="anchored" data-anchor-id="literature-research">Literature Research</h2>
+<p>
+When writing the original version of this article <span class="reference" id="korinek23GenAI" style="p"></span>, LLMs were of limited usefulness for searching and referencing the academic literature. When asked for citations or references, they were often able to provide standard references that are frequently cited in the literature (say, Rothschild-Stiglitz), but basic LLMs frequently hallucinated authoritative-sounding papers that do not actually exist or made other simple factual mistakes. The following is an example for GPT-4 in Fall 2023:
+</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b> Prompt: </b> Provide citation information for Anton Korinek's paper with Zach Bethune. </span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"> <b> Response (GPT-4): </b> </div>
+    <a href="#" class="expandable-toggle" data-target="content20">[+] click to expand</a>
+    <div id="content20" class="response_rest">
+        <p>Bethune, Z., &amp; Korinek, A. (2021). Covid-19 Infection Externalities: Trading Off Lives vs. Livelihoods. Journal of Monetary Economics, 117, 1-13.</p>
+    </div>
+</div>
+
+<!-- Analysis Box Conversion -->
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start">
+            <b> Analysis: </b> The paper title is correct, but the publication information is hallucinated — and this is for a paper with over 200 citations. For small variations of my prompt (e.g., putting the authors in alphabetical order), the LLM responded that it could not find such a paper. Requests for academic literature frequently lead to invented paper titles and journals that, however, sound superficially plausible. 
+            <span class="reference" id="buchanan2023hallucinaterefs"></span>
+            systematically examine the capability of GPT-3.5 to write about every JEL code and find that more than 30% of the citations generated do not exist.
+        </span>
+    </div>
+</div>
+
+
+<!-- Citation -->
+
+<p>Traditional LLMs struggle with academic references because they cannot retain their training data verbatim, but instead retain an abstract representation of it that involves some loss of information. While this approach works for many general concepts, it falls short for academic references where precision is crucial.</p>
+<div class="expandable-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start_minimal">
+            Recent advances in LLM-powered search have significantly improved the ability of LLMs to help with literature research. There are alternative tools available that employ LLMs to help researchers find academic references.
+        </span>
+        <span class="prompt_rest_minimal inline-expand" id="content21">
+            For example, LLMs with web connections such as Bing or Bard can be prompted to look up specific papers on the internet and generate reference information from their findings. Moreover, the website 
+            <a href="https://elicit.org" target="_blank" style="font-size: 90%; color: blue; text-decoration: underline;">https://elicit.org</a>
+            allows searches of the academic literature and displays a list of papers (that really exist) based on simple user prompts. It also includes a brief summary generated by an LLM.
+        </span>
+        <a href="#" class="expandable-toggle-minimal" data-target="content21">[+]</a>
+    </div>
+</div>
+</section>
+<section id="background-internet-research" class="level2">
+<h2 class="anchored" data-anchor-id="background-internet-research">Background Internet Research</h2>
+<p>As already observed in <a href="../subs/search.html">the search page</a>, LLM-powered search tools have also become powerful instruments for factual research. Like all LLMs, search tools based on LLMs sometimes hallucinates, but they do so much less frequently than LLMs that do not have the ability to access the web. Moreover, they offer links supporting the statements that they make, which the user can follow to judge the reliability of the sources and verify the model’s output.</p>
+<p>The following is an example:</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b> Prompt: </b> Can you explain the EU AI Act? </span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"> <b> Response (Perplexity.AI Pro): </b> </div>
+    <a href="#" class="expandable-toggle" data-target="content22">[+] click to expand</a>
+    <div id="content22" class="response_rest">
+        <p>The EU AI Act is a groundbreaking piece of legislation that aims to regulate artificial intelligence systems within the European Union. Here's a comprehensive overview of its key aspects:</p>
+
+        <b>Risk-Based Approach</b>
+        <p>The AI Act classifies AI systems into four risk categories:</p>
+
+        <ol>
+            <li><b>Unacceptable risk:</b> These AI systems are prohibited outright.</li>
+            <li><b>High risk:</b> Strictly regulated with specific requirements.</li>
+            <li><b>Limited risk:</b> Subject to transparency obligations.</li>
+            <li><b>Minimal risk:</b> Allowed with minimal restrictions.</li>
+        </ol>
+
+        <b>Key Provisions</b>
+        <p>[2 pages of descriptions]</p>
+
+        <b>Conclusion</b>
+        <p>The EU AI Act represents the world's first comprehensive legal framework for AI, aiming to foster innovation while protecting fundamental rights and ensuring ethical AI development. It sets a global standard for AI regulation and is likely to have far-reaching impacts on AI development and deployment worldwide.</p>
+    </div>
+</div>
+
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start">
+            <b> Analysis: </b> After submitting a query, the site first shows the keywords it searches for (in my example, "EU AI Act explanation," "European Union Artificial Intelligence Act overview," and "What is the EU AI Act?"), then a preliminary list of the materials it evaluates as "Reading" (in my example, 11 websites). Then it generates a response that starts with a clickable list of sources, continues with a synthesis of the materials found, and ends with a conclusion that summarizes everything. The summary it provided is satisfactory, although I had to ask a follow-up question for it to report the date it was passed. Note that the leading LLM-based chatbots without search (e.g., Anthropic) were not able to correctly answer the question since their training data cut off before the passage of the act.
+        </span>
+    </div>
+</div>
+
+<p>In my explorations, I found that LLM-powered search works well for general factual questions but regularly runs into difficulties in identifying the most relevant sources for more specialized queries. For example, when asking for academic literature on a given topic, a regular occurrence is that they base significant parts of their responses on obscure papers that happen to have a title that closely matches the query. Further progress will require that these tools better learn to prioritize the most impactful academic references, perhaps as measured by citation counts and journal and researcher impact factors.</p>
+</section>
+<section id="formatting-references" class="level2">
+<h2 class="anchored" data-anchor-id="formatting-references">Formatting References</h2>
+<p>Although they are really bad at generating references, even simple LLMs (such as GPT3.5) are quite capable at formatting references in the desired manner once the correct citation information is provided:</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b> Prompt: </b> Convert the following reference to BibTeX format: </span>
+        <span class="prompt_rest inline-expand" id="content23p">
+            Anton Korinek, Large Language Models and Cognitive Automation for Economic Research, NBER Working Paper 30957, February 2023.
+        </span>
+        <a href="#" class="expandable-toggle" data-target="content23p">[+] click to expand</a>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"> <b> Response (GPT-4): </b> </div>
+    <a href="#" class="expandable-toggle" data-target="content23">[+] click to expand</a>
+    <div id="content23" class="response_rest">
+        <pre>@techreport{korinek2023large,
+ title={Large Language Models and Cognitive Automation for Economic Research},
+ author={Korinek, Anton},
+ year={2023},
+ institution={NBER},
+ type={Working Paper},
+ number={30957},
+ month={February}
+}
+        </pre>
+    </div>
+</div>
+
+<!-- Second Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b> Follow-up Prompt: </b> Format it in Chicago style. </span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"> <b> Response (GPT-4): </b> </div>
+    <a href="#" class="expandable-toggle" data-target="content23ctd">[+] click to expand</a>
+    <div id="content23ctd" class="response_rest">
+        <p>Korinek, Anton. 2023. "Large Language Models and Cognitive Automation for Economic Research." NBER Working Paper No. 30957, February.</p>
+    </div>
+</div>
+
+<p>LLMs can convert a whole bibliography in batch format, for example from APA to Chicago format or into bibtex format.</p>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start">
+            For very highly-cited works that the LLM has frequently encountered in its training data, a prompt like "bibtex reference for stiglitz weiss" also works well and saves the user from having to copy or type the detailed citation information of the work in question. However, it is advisable to double-check the information.
+        </span>
+    </div>
+</div>
+
+</section>
+<section id="translating-text" class="level2">
+<h2 class="anchored" data-anchor-id="translating-text">Translating Text</h2>
+<p>
+<span class="reference" id="jiaow23"></span>
+ demonstrate that LLMs starting with GPT-3.5 perform competitively with commercial translation products on high-resource languages. The following is an example:
+</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b> Prompt: </b> Translate the following sentence into Spanish, German, and Finnish: </span>
+        <span class="prompt_rest inline-expand" id="content24p">
+            "Generative AI, in particular large language models (LLMs) such as ChatGPT, has the potential to revolutionize research in many disciplines."
+        </span>
+        <a href="#" class="expandable-toggle" data-target="content24p">[+] click to expand</a>
+    </div>
+
+    <hr>
+
+<!-- BLOCK EXPAND RESPONSE -->
+<div class="response_start"><b> Response (GPT-4): </b></div>
+<a href="#" class="expandable-toggle" data-target="content24">[+] click to expand</a>
+<div id="content24" class="response_rest">
+    <p><b>Spanish:</b> La IA generativa, en particular los modelos de lenguaje grandes (LLMs) como ChatGPT, tiene el potencial de revolucionar la investigación en muchas disciplinas.</p>
+    <p><b>German:</b> Generative KI, insbesondere große Sprachmodelle (LLMs) wie ChatGPT, hat das Potenzial, die Forschung in vielen Disziplinen zu revolutionieren.</p>
+    <p><b>Finnish:</b> Generatiivinen tekoäly, erityisesti suuret kielimallit (LLM) kuten ChatGPT, voi mullistaa tutkimusta monilla aloilla.</p>
+  </div>
+
+</div>
+
+<p>During pre-training, LLMs develop representations of concepts that abstract beyond any single language, and this makes them able to easily map text from one language to the other. Performance on lower-resource languages for which less digitized text and fewer digitized translations are available is worse.</p>
+</section>
+<section id="explaining-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="explaining-concepts">Explaining Concepts</h2>
+<p>LLMs can act as a tutor and explain many common economic concepts – at a level that is useful for students who are trying to learn new materials, and even for more advanced researchers who are branching out beyond their main area of expertise. For good explanations, it is critical to employ the most cutting-edge LLMs.</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b> Prompt: </b> What are instrumental variables useful for? </span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"><b> Response (GPT-4): </b></div>
+    <a href="#" class="expandable-toggle" data-target="content25">[+] click to expand</a>
+    <div id="content25" class="response_rest">
+        <p>Instrumental variables are useful for addressing issues of endogeneity in statistical analysis, particularly in regression analysis. Endogeneity can occur due to unobserved variables, measurement errors, or simultaneity, which can lead to biased and inconsistent parameter estimates.</p>
+
+        <p>Instrumental variables are used to isolate the effect of the variable of interest from the effects of other confounding variables. They are particularly useful in situations where it is not possible to directly observe all relevant variables, or where the variable of interest is correlated with the error term.</p>
+
+        <p>In addition, instrumental variables can be used to estimate causal relationships in observational data, where random assignment of treatments is not possible. They provide a way to mimic the conditions of a randomized controlled trial, which is considered the gold standard for causal inference.</p>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start">
+            <b> Analysis: </b> When employing LLMs in this way, follow-up questions that go into further detail can be very useful and allow the user to obtain personalized tutoring.
+        </span>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start">Other concept questions that the LLM answered well included the following:</span>
+        <span class="prompt_rest inline-expand" id="content2526">
+            <ul>
+                <li>What is the invisible hand theorem and why does it hold?</li>
+                <li>What is Monte Carlo simulation?</li>
+                <li>How does Cournot equilibrium differ from Bertrand equilibrium?</li>
+                <li>What are the leading theories of exchange rate determination?</li>
+            </ul>
+        </span>
+        <a href="#" class="expandable-toggle2" data-target="content2526">[+] click to expand</a>
+    </div>
+</div>
+
+<p>But sometimes LLMs, especially earlier versions, hallucinate when providing answers. The following is an example using the older GPT-3.5 model text-davinci-003, which powered the original free version of ChatGPT in late 2022:</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b> Prompt: </b> What is the second theorem of welfare economics? </span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"><b> Response (GPT-3.5): </b></div>
+    <a href="#" class="expandable-toggle" data-target="content27">[+] click to expand</a>
+    <div id="content27" class="response_rest">
+        <p>The Second Theorem of Welfare Economics states that any competitive equilibrium is Pareto efficient. This means that any competitive market outcome is the most efficient outcome possible, as it cannot be improved upon without making at least one individual worse off.</p>
+
+        <p><b>(Author's note: this is clearly the first not the second theorem!)</b></p>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start">
+            <b> Analysis: </b> The two fundamental theorems of welfare economics are cornerstones of modern economics, but the text generated by GPT-3.5 confuses the two. Although LLMs give clear and impressive responses in many instances, this illustrates that their output cannot always be trusted, even on what seem like basic questions about fundamental concepts. Since LLMs can be quite helpful and powerful as tutors, one of the dilemmas they introduce is that students are likely to use them even though they occasionally produce false responses with great confidence.
+        </span>
+    </div>
+</div>
+
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

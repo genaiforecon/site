@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Applications of LLMs – Generative AI for Economic Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fad5ab29a14bbe0a7a7d29177f3f13bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" type="text/css" href="expandable.css">
+<script src="expandable.js"></script>
+<script src="references1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Generative AI for Economic Research</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../get-started.html"> 
+<span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-new-developments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">New Developments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-new-developments">    
+        <li>
+    <a class="dropdown-item" href="../subs/overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/reasoning.html">
+ <span class="dropdown-text">Reasoning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/access.html">
+ <span class="dropdown-text">Access Modes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/search.html">
+ <span class="dropdown-text">Search</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/improvements.html">
+ <span class="dropdown-text">Technical Improvements</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/practical.html">
+ <span class="dropdown-text">Practical Applications</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-applications" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Applications</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-applications">    
+        <li>
+    <a class="dropdown-item" href="../applications.html">
+ <span class="dropdown-text">Summary</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/ideation.html">
+ <span class="dropdown-text">Ideation and Feedback</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/writing.html">
+ <span class="dropdown-text">Writing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/background.html">
+ <span class="dropdown-text">Background Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/coding.html">
+ <span class="dropdown-text">Coding</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/data.html">
+ <span class="dropdown-text">Data Analytics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/math.html">
+ <span class="dropdown-text">Mathematical Derivations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/promoting.html">
+ <span class="dropdown-text">Promoting Research</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../resources.html"> 
+<span class="menu-text">Further Resources</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/genaiforecon/site"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ideation-and-feedback" id="toc-ideation-and-feedback" class="nav-link active" data-scroll-target="#ideation-and-feedback">Ideation and Feedback</a>
+  <ul class="collapse">
+  <li><a href="#brainstorming" id="toc-brainstorming" class="nav-link" data-scroll-target="#brainstorming">Brainstorming</a></li>
+  <li><a href="#feedback" id="toc-feedback" class="nav-link" data-scroll-target="#feedback">Feedback</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Applications of LLMs</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="ideation-and-feedback" class="level1">
+<h1>Ideation and Feedback</h1>
+<div class="expandable-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start_minimal">Research starts with the process of ideation, i.e., generating, developing, and selecting ideas. I start my exploration of LLMs with use cases that involve ideation and feedback for two reasons. First, starting with ideas follows the natural sequence of research. Second, ideation and feedback showcase a new set of capabilities that starkly distinguish LLMs from earlier applications of deep learning in research -- they display a form of creativity that had long been reserved for humans. Ideation and feedback are areas where it pays off to use the most advanced LLMs available.</span>
+        <span class="prompt_rest_minimal inline-expand" id="content1">  A model of idea generation by <div class="reference" id="girotra2010idea"></div> observes that creative performance depends on (i) the quantity of ideas, (ii) the average quality of ideas and (iii) the variance which determines how many exceptional ideas are generated. <div class="reference" id="girotra2023llms4ideas"></div> find that GPT-4 outperforms MBA students at a top US business school on all three dimensions in a contest to develop innovative new product ideas. As a result, they argue that the bottleneck in ideation is increasingly shifting from generating to evaluating ideas. <div class="reference" id="si2024llmsgeneratenovelresearch"></div> find that Claude 3.5 Sonnet is better at identifying interesting questions in NLP research, although its questions are ranked as slighly less feasible. <br> <br>
+          
+        As we will see in the following, although the current capabilities of cutting-edge LLMs in the areas of ideation and feedback are impressive, they also have limitations. There are also broader potential pitfalls. Any researcher who uses LLMs for ideation and feedback must of course be careful about which points they use and which points they reject in a given use case -- just as we do when we discuss ideas with colleagues. There may also be subtle downsides that materialize over time. The reliance on LLM-generated ideas may make individual researchers rely more on automation and practice less critical thinking of their own. Moreover, if more and more economists rely on the same one or two cutting-edge LLMs to generate ideas and obtain feedback, there is a risk that the ideas that economists work on will become more and more homogeneous and include fewer truly novel ideas. This risk of homogenization is also discussed in <div class="reference" id="bommasanih21"></div>. Moreover, when using LLMs for brainstorming or feedback, it is important to keep in mind when their training data cuts off (see <a href="#overview.html#table_overview">Table 1</a>).</span>
+        <a href="#" class="expandable-toggle-minimal" data-target="content1">[+]</a>
+    </div>
+  </div>
+<section id="brainstorming" class="level2">
+<h2 class="anchored" data-anchor-id="brainstorming">Brainstorming</h2>
+<p>Cutting-edge LLMs are quite useful for brainstorming (or, perhaps more aptly, <em>neural-net</em>-storming) ideas and examples related to a defined theme. Having been trained on a vast amount of data that represents a cross-section of all human knowledge, the breadth of the representation of the world that cutting-edge LLMs have developed from their training data includes a fair bit of knowledge of economics. However, at present, human experts still have an edge when it comes to depth, and so LLMs are best suited for brainstorming in areas in which one is not an expert.</p>
+<p>The following prompt illustrates a simple example using GPT-4. Notice that I added an instruction to limit the response to 10 words for each point – otherwise the LLM produced a whole paragraph on each point, which may be useful in general but would be too lengthy for our illustrative purposes here:</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><strong>Prompt:</strong> Can you brainstorm 20 channels through which AI may increase inequality? Limit your response to 10 words for each point.</span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+<div class="response_start"> <b> Response (GPT 4): </b> </div>
+<a href="#" class="expandable-toggle" data-target="content2">[+] click to expand</a>
+<div id="content2" class="response_rest">
+    1. Job loss due to automation in lower-skilled industries.<br><br>
+  2. AI-driven wealth concentration in tech-savvy organizations.<br><br>
+  3. Digital literacy gap leading to economic disparity.<br><br>
+  4. Lack of universal access to AI technology.<br><br>
+  5. AI-driven bias in hiring and selection processes.<br><br>
+  6. Imbalance in job market due to AI specializations.<br><br>
+  7. Data privacy issues affecting vulnerable populations.<br><br>
+  8. AI-driven services predominantly targeting wealthy consumers.<br><br>
+  9. Algorithms exacerbating social inequality through bias.<br><br>
+  10. Inclusive AI product development lacking.<br><br>
+  11. Higher prices due to AI-enhanced products/services.<br><br>
+  12. AI-fueled gentrification in tech-centered cities.<br><br>
+  13. Anticompetitive practices bolstered by AI applications.<br><br>
+  14. Lack of labor rights for jobs displaced by AI.<br><br>
+  15. Educational imbalance due to AI-learning tools.<br><br>
+  16. AI in healthcare excluding lower socioeconomic groups.<br><br>
+  17. Disproportionate influence of AI in political campaigns.<br><br>
+  18. Undervaluing of human skills in favor of AI.<br><br>
+  19. Biased AI systems perpetuating discrimination.<br><br>
+  20. AI reinforcing societal hierarchies via data analysis.
+</div>
+
+</div>
+
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"> <b> Analysis: </b> The channels listed by the model are on-topic, largely reasonable, and span a wide range of what I could think of plus some more. However, some of the bullet points are a bit repetitive. </span>
+    </div>
+  </div>
+
+<div>
+  <p> </p>
+</div>
+<p>A noteworthy aspect to underscore is the remarkable speed and volume of responses generated by LLMs during activities like brainstorming, which generates its own distinct form of usefulness. Even if only a single suggestion out of 20 in examples like this proves beneficial, it may make our research significantly more productive.</p>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start">Other brainstorming prompts that I found useful include the following:</span>
+        <span class="prompt_rest inline-expand" id="content910"> <ul>
+    <li>I am an economist working on AI and inequality. Can you brainstorm an outline on {insert topic}?</li>
+    <li>I am an economist working on AI and inequality. Can you brainstorm 5 potential paper topics and describe each in one sentence?</li>
+    <li>I am an economist working on an academic paper on {insert topic}. Can you brainstorm a research plan for me?</li>
+</ul></span>
+        <a href="#" class="expandable-toggle2" data-target="content910">[+] click to expand</a>
+    </div>
+  </div>
+
+
+</section>
+<section id="feedback" class="level2">
+<h2 class="anchored" data-anchor-id="feedback">Feedback</h2>
+<p>LLMs can also evaluate ideas, highlighting, for example, the pros and cons of different hypotheses or research plans. The following example asks the LLM to list the pros and cons of working on a specific area of research. This shows that LLMs can provide useful input on different research directions.</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b>Prompt:</b> What are the top-3 pros and cons of working on the
+economics of AGI? </span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+<div class="response_start"> <b> Response (GPT-4):</b></div>
+<a href="#" class="expandable-toggle" data-target="content9">[+] click to expand</a>
+<div id="content9" class="response_rest">
+    <b>Pros of Working on the Economics of AGI:</b><br><br>
+
+<b>1. High Impact:</b> The development of AGI (Artificial General Intelligence) 
+has the potential to revolutionize many sectors of the economy, from 
+healthcare to finance to transportation. Working on the economics 
+of AGI allows you to be at the forefront of this transformation and 
+potentially shape its direction.<br><br>
+
+<b>2. Interdisciplinary Approach:</b> The economics of AGI involves a combination 
+of economics, computer science, and philosophy, among other disciplines. 
+This interdisciplinary approach can be intellectually stimulating 
+and rewarding.<br><br>
+
+<b>3. Potential for Innovation:</b> Given that AGI is a relatively new and 
+rapidly evolving field, there is a lot of room for innovative thinking 
+and novel approaches. This can be exciting and fulfilling for those 
+who enjoy problem-solving and creative thinking.<br><br>
+
+<b>Cons of Working on the Economics of AGI:</b><br><br>
+
+<b>1. Uncertainty:</b> The future of AGI is highly uncertain, making it difficult 
+to make accurate predictions or develop robust economic models. This 
+uncertainty can make the work challenging and sometimes frustrating.<br><br>
+
+<b>2. Ethical and Societal Implications:</b> The development and deployment 
+of AGI raise a host of ethical and societal issues, from job displacement 
+to privacy concerns to potential misuse. Working on the economics 
+of AGI means grappling with these complex and often contentious issues.<br><br>
+
+<b>3. Limited Data:</b> Given that AGI is still in its early stages, there 
+is limited data available for economic analysis. This lack of data 
+can make it difficult to test hypotheses or draw definitive conclusions.<br><br>
+
+</div>
+
+</div>
+
+<div>
+  <p> </p>
+</div>
+<p>What is particularly useful is to iterate between brainstorming and evaluation. Similar to how a researcher comes up with ideas, selects the most promising ones, and refines them, LLMs can be prompted to brainstorm, select which ideas it rates as the most promising, and brainstorm further on them.</p>
+The long context window of Claude 2 makes it possible to upload entire research papers into the LLM and ask for feedback. I fed the Feb.~2023 NBER working paper version of this paper <div class="reference" id="korinek23llm" style="p"></div> into Claude 2 and asked it the following:
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b>  Prompt: </b> Can you suggest ways to improve this paper? <b>[Attachment: w30957.pdf]</b> </span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+<div class="response_start"> <b> Response (Claude 2): </b> Here are some suggestions for improving the paper on large language models and cognitive automation: </div>
+<a href="#" class="expandable-toggle" data-target="content10">[+] click to expand</a>
+<div id="content10" class="response_rest">
+<ul>
+    <li>Provide more specific details and examples when describing the different use cases. For some of them, the explanations are a bit vague. Adding more concrete illustrations would strengthen those sections.</li>
+    <li>Expand the discussion of the limitations and potential downsides of over-relying on LLMs. The paper focuses mostly on the benefits, but more balance discussing the risks would be helpful.</li>
+    <li>Strengthen the analysis of the long-term implications. The outlook section is thought-provoking but remains speculative. Adding more rigorous analysis to back up the predictions could make it more convincing.</li>
+    <li>Consider testing the use cases on multiple LLMs and comparing their capabilities. The examples all seem to use a single LLM, but testing different ones could reveal variation in strengths/weaknesses.</li>
+    <li>Provide guidance on how to properly evaluate LLM outputs before using them. Since LLMs can make mistakes, some tips on double-checking the results would be useful.</li>
+    <li>(Additional suggestions omitted for space reasons)</li>
+</ul>
+<p>In general, providing more specifics, analysis, examples, and structure could take the paper from a promising start to a more polished and convincing final product. Let me know if you would like me to elaborate on any of these suggestions!</p>
+</div>
+
+</div>
+
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"> <b> Analysis: </b> All of the listed bullet points are good suggestions, and I have incorporated several of them in the paper during the revision process.  </span>
+    </div>
+  </div>
+
+<div>
+  <p> </p>
+</div>
+<p>Since Claude 2 can hold the content of the entire paper in its memory, it can offer comments on any parts of it if requested.</p>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start">The following are additional examples of useful prompts:</span>
+        <span class="prompt_rest inline-expand" id="content1011"> <ul>
+    <li>What are the main strengths and weaknesses of this paper?</li>
+    <li>What are the main novel ideas in the paper that are not sufficiently emphasized?</li>
+    <li>Can you identify any instances of bias in this paper?</li>
+    <li>How could I improve section {insert number}?</li>
+    <li>Can you draft a referee report for this paper for the Journal of Economic Literature?</li>
+</ul>
+</span>
+        <a href="#" class="expandable-toggle2" data-target="content1011">[+] click to expand</a>
+    </div>
+  </div>
+
+
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

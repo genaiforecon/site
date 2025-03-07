@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Advances at the LLM Frontier – Generative AI for Economic Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fad5ab29a14bbe0a7a7d29177f3f13bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" type="text/css" href="expandable.css">
+<script src="expandable.js"></script>
+<script src="references1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Generative AI for Economic Research</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../get-started.html"> 
+<span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-new-developments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">New Developments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-new-developments">    
+        <li>
+    <a class="dropdown-item" href="../subs/overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/reasoning.html">
+ <span class="dropdown-text">Reasoning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/access.html">
+ <span class="dropdown-text">Access Modes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/search.html">
+ <span class="dropdown-text">Search</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/improvements.html">
+ <span class="dropdown-text">Technical Improvements</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/practical.html">
+ <span class="dropdown-text">Practical Applications</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-applications" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Applications</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-applications">    
+        <li>
+    <a class="dropdown-item" href="../applications.html">
+ <span class="dropdown-text">Summary</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/ideation.html">
+ <span class="dropdown-text">Ideation and Feedback</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/writing.html">
+ <span class="dropdown-text">Writing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/background.html">
+ <span class="dropdown-text">Background Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/coding.html">
+ <span class="dropdown-text">Coding</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/data.html">
+ <span class="dropdown-text">Data Analytics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/math.html">
+ <span class="dropdown-text">Mathematical Derivations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/promoting.html">
+ <span class="dropdown-text">Promoting Research</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../resources.html"> 
+<span class="menu-text">Further Resources</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/genaiforecon/site"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#leading-proprietary-models" id="toc-leading-proprietary-models" class="nav-link" data-scroll-target="#leading-proprietary-models">Leading Proprietary Models</a></li>
+  <li><a href="#leading-open-source-models" id="toc-leading-open-source-models" class="nav-link" data-scroll-target="#leading-open-source-models">Leading Open-Source Models</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Advances at the LLM Frontier</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p><a href="#table_overview">Table 1</a> provides an overview of the top proprietary and open-source LLM providers as of November 4, 2024.</p>
+<div class="table-container" id="table_overview">
+    
+<table class="caption-top table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">AI Lab</th>
+<th data-quarto-table-cell-role="th">Best Model</th>
+<th data-quarto-table-cell-role="th">Released</th>
+<th data-quarto-table-cell-role="th">LMSYS</th>
+<th data-quarto-table-cell-role="th">Tokens</th>
+<th data-quarto-table-cell-role="th">Data Cutoff</th>
+<th data-quarto-table-cell-role="th">URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OpenAI</td>
+<td>gpt-4o-latest</td>
+<td>Sep 2024</td>
+<td>1340</td>
+<td>128k</td>
+<td>Oct 2023</td>
+<td><a href="https://chat.com" target="_blank">chat.com*</a></td>
+</tr>
+<tr class="even">
+<td>GoogleDM</td>
+<td>Gemini 1.5 Pro 002</td>
+<td>Sep 2024</td>
+<td>1303</td>
+<td>~2m</td>
+<td>Nov 2023</td>
+<td><a href="https://gemini.google" target="_blank">gemini.google*</a></td>
+</tr>
+<tr class="odd">
+<td>xAI</td>
+<td>Grok-2</td>
+<td>Aug 2024</td>
+<td>1290</td>
+<td>128k</td>
+<td>Mar 2024</td>
+<td><a href="https://x.ai" target="_blank">x.ai</a> / <a href="https://x.com" target="_blank">x.com*</a></td>
+</tr>
+<tr class="even">
+<td>Anthropic</td>
+<td>Claude 3.5 Opus</td>
+<td>Oct 2024</td>
+<td>1286</td>
+<td>200k</td>
+<td>Apr 2024</td>
+<td><a href="https://claude.ai" target="_blank">claude.ai</a></td>
+</tr>
+<tr class="odd">
+<td>Meta</td>
+<td>Llama 3.1-405b</td>
+<td>Jul 2024</td>
+<td>1267</td>
+<td>128k</td>
+<td>Dec 2023</td>
+<td><a href="https://meta.ai" target="_blank">meta.ai</a> (OS)</td>
+</tr>
+<tr class="even">
+<td>Alibaba</td>
+<td>Qwen 2.5-72b</td>
+<td>Sep 2024</td>
+<td>1263</td>
+<td>128k</td>
+<td>Sep 2024</td>
+<td><a href="https://github.com" target="_blank">GitHub (OS)</a></td>
+</tr>
+</tbody>
+</table>
+
+    <footer>
+        <small>
+    <span style="font-size: 90%; line-height: 1; display: inline-block; margin: 0; padding: 0;">
+         <b> Table 1 </b>: Overview of top proprietary and open-source LLM providers according to their best model score in the LMSYS leaderboard. 
+        Source: <a href="https://lmarena.ai/?leaderboard" target="_blank">https://lmarena.ai/?leaderboard</a>. 
+        See <span class="reference" id="chiang2024LMSYS"></span>. Last accessed on Nov. 4th, 2024.<br><br>
+        * Denotes chatbots that can also access real-time information on the internet.
+    </span>
+</small>
+
+
+    </footer>
+</div>
+<p> The table is ranked by the score of each provider's leading models in the LMSYS leaderboard (column 4), which pits randomly-selected pairs of LLMs against each other and employs user ratings to compile an <span class="footnote" id="elo-footnote" word="Elo-like score">
+    The Elo-system was designed by the physicist Arpad Elo to rank chess players by their relative skills. It is designed so that a score difference of \( D \) points between two players (or LLMs) corresponds to the higher-ranked one having a probability of \( \frac{1}{1+10^{D/400}} \) of winning in a direct match-up.
+</span> for <span class="footnote" word="each model.">
+    Like all ranking systems that condense the capabilities of candidates who differ across many dimensions into a single dimension, the LMSYS score offers only a partial and imperfect snapshot of LLM capabilities. I chose to use it for the overview table here because it has almost universal coverage of LLMs, it is updated in close to real-time, and it aggregates many different types of use cases when evaluating models. The LMSYS score is also highly correlated with other benchmarks of general LLM performance such as the MMLU.Columns 5 and 6 of the table list how many tokens (or syllables of text) the models can process simultaneously, and the date on which their training data cuts off. Models generally do not have knowledge of facts that occurred past this date, except if they have the capacity to access the internet. The last column lists the URLs under which the models can be accessed. The designation "OS" reflects that the model is available on an open-source basis, i.e., that it can be freely downloaded, run, and modified by researchers.
+</span>
+</p>
+<p>Several observations stand out from the table:</p>
+<ol type="1">
+<li>The field is moving fast— all six of the listed models have been released or updated in the past four months. In fact, older models quickly fall in the rankings. For example, if OpenAI had not released any model updates since April 2024, it would currently rank at the bottom of Table 1.</li>
+<li>OpenAI continues to be the clear leader in the space with the latest update to its GPT-4o model.</li>
+<li>The gap between the LMSYS scores of the top models is, however, relatively small. For example, using the Elo formula (see <a href="#table_overview">Table 1</a> footnote), OpenAI’s GPT-4o would win against the next-ranked Google DeepMind Gemini 1.5 Pro in 55.3% of match-ups—hardly a decisive victory. In the words of Microsoft CEO Satya Nadella, LLMs are becoming “more of a commodity.”</li>
+<li>The open-source models by Meta and Alibaba, listed in the bottom two rows of the table, have caught up and are now close to the frontier—a very different situation from a year ago, when open-source models were significantly behind proprietary models.</li>
+<li>Chinese-made LLMs have ascended particularly rapidly, as reflected in the last row. Since LMSYS rankings are based on mostly Western user preferences, they may in fact understate the capabilities of Qwen 2.5. What is notable is that the model ranks so close to the best Llama 3.1 model, even though its parameter count (72bn) is just a fraction of the latter’s (405bn).</li>
+</ol>
+<p><strong>Speed of Progress</strong></p>
+<p>
+To provide data on the speed of progress, I list a few quantitative indicators from OpenAI's series of GPT-4 models as an example. Since the initial release of GPT-4 in March 2023---less than two years ago---the models' context window size has increased 16-fold, allowing it to process far more content at once, the quality of the model\textquoteright s responses has significantly improved (the current LMSYS score of the original GPT-4 is only 1186), and the speed of output generation has increased 3-fold. <a href="#fig:gpt4_trends">Figure 1</a> illustrates the steep decline in the cost of reading and generating text (input and output tokens) of GPT-4 level models since March 2023---by 92% and 83% respectively---even though their LMSYS score steadily improved. See <span class="reference" id="ho2024algoprogress"></span> for a detailed examination of algorithmic progress in LLMs.   
+</p>
+<p>
+In the following, I describe the leading LLM products of the frontier labs listed in <a href="#table_overview">Table 1</a>. Readers who are most interested in the conceptual advances may want to skip to <a href="../subs/reasoning.html">the page on reasoning</a>.
+</p>
+<p>
+Each of the labs listed in <a href="#table_overview">Table 1</a> families of models of different sizes that reflect different trade-offs between model performance, speed, and cost. Larger models are more "intelligent" and generally offer better performance and greater capabilities, but they also require more computational resources and take longer to process requests, making them more expensive. Smaller models, on the other hand, are faster and more cost-effective, but may not provide the same level of quality in their outputs. This allows users to consider their specific needs and budget when choosing the appropriate model size for their applications.
+</p>
+<section id="leading-proprietary-models" class="level2">
+<h2 class="anchored" data-anchor-id="leading-proprietary-models">Leading Proprietary Models</h2>
+<p>The first four labs listed in the table offer proprietary models, which means that their models can only be accessed via the labs’ computer servers. They do not share the source code, architecture, and model weights of their LLMs but allow users to access them via chatbots, web-based experimentation platforms, or APIs, subject to the certain conditions and controls.</p>
+<div class="expandable-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"> <b> Open AI's GPT-4o</b> model, last updated in September 2024, continues to lead the market for LLMs in terms of both general capabilities and popularity. (OpenAI's o1 model, also released in September 2024, demonstrates new advances in LLM-based reasoning that are extremely valuable for research, as described in <a href="../subs/reasoning.html">the reasoning page</a> , but less valuable for general use, resulting in a lower LMSYS score than GPT-4o.)</span>
+        <span class="prompt_rest_minimal inline-expand" id="contentGPT4o"> GPT-4o is an evolution of the original GPT-4 model of March 2023 that is considerably smaller, faster, cheaper, and more capable, as shown in <a href="#fig:gpt4_trends">Figure 1</a> . The suffix "o" stands for "omni" to reflect that the model can process text, images, and sound. GPT-4o also offers workspace extensions that make it easy to interact collaboratively with the model, including Canvas and Advanced Data Analysis (described in <a href="../subs/access.html">the access mode page</a>  and <a href="../subs/data.html">the data analysis page</a>  below), and the ability to search the web (described in <a href="../subs/improvements.html">the  page about search</a>). GPT-4o is subject to usage limits in the free version of ChatGPT. The model's smaller sibling, GPT-4o-mini, is faster and 94% cheaper but would still rank in the number 5 spot in <a href="#table_overview">Table 1</a>, making it an attractive choice for bulk data processing. 
+        </span>
+        <a href="#" class="expandable-toggle-minimal" data-target="contentGPT4o">[+]</a>
+    </div>
+</div>
+
+<div class="figure">
+    <div style="text-align: center;">
+        <img src="gpt4_pricing_trend.png" alt="Decline in operating costs and quality improvement of GPT-4 models" style="width: 80%;">
+        <p class="caption">
+            <b>Figure <span id="fig:gpt4_trends">1</span></b>: Decline in operating costs and quality improvement of GPT-4 models <br>
+            <small>Source: compiled by author.</small>
+        </p>
+    </div>
+</div>
+
+
+
+<div class="expandable-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start_minimal"><b>Google DeepMind's Gemini</b> series of LLMs carries the distinction of having a 2m token context window—the longest of all publicly available LLMs, which allows it to simultaneously process a few dozen books or several hundred papers.</span>
+        <span class="prompt_rest_minimal inline-expand" id="contentGemini"> This offers new use cases—for example, it allows researchers to upload a significant body of their work all at once and process queries based on it, or to simultaneously process videos or large corpora of images. The most powerful version is currently <em>Gemini 1.5 Pro 002,</em> updated September 2024, and is only available to paying subscribers. It also comes with a smaller sibling, <em>Gemini 1.5 Flash,</em> which offers greater speeds at lower cost but slightly lower performance. Gemini is also accessible via an eponymous chatbot that can access the internet to include real-time information in its responses and allows users to cross-check results and follow links to its sources.  
+        </span>
+        <a href="#" class="expandable-toggle-minimal" data-target="contentGemini">[+]</a>
+    </div>
+</div>
+
+<p><strong>xAI’s Grok-2</strong> is a relative newcomer in the LLM space. xAI was founded by Elon Musk in March 2023, and its Grok-2 model has ascended into the top-3 a bit over a year after the labs founding, offering state-of-the-art peformance in most tasks. xAI benefits from its close relationship with X, formerly Twitter, which Elon Musk took over in 2022 and uses for training data. This allows Grok-2 to be up-to-date on news. Moreover, it distinguishes itself by not imposing any limits on user queries, following instructions and generating controversial content that many may consider unethical, reflecting Elon Musk’s “free-speech absolutism”.</p>
+<div class="expandable-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start_minimal"><b>Anthropic's Claude 3.5 Sonnet</b>, by contrast, brands itself as being a helpful, honest, and harmless assistant, employing a process called constitutional AI to train the LLM to follow a set of high-level ethical principles <span class="reference" id="baial2022" style="p"></span> .</span>
+        <span class="prompt_rest_minimal inline-expand" id="contentClaude"> Claude is the model I use most for writing as I like its succinct, elegant, and insightful writing style. The latest update, released in October 2024, ranks the model in the top spot of several technical benchmarks. Claude 3.5 has a context window of 200k tokens, which makes it able to process about 150,000 words in one go—for example, several academic papers. Anthropic pioneered many LLM applications and access modes, for example, the chatbot format before ChatGPT or, more recently, interactive collaboration in workspaces called Artifacts  and autonomous computer use (<a href="../subs/access.html">the access mode page</a>). Another recent update, PDF support (beta), allows Claude to visually process PDF documents uploaded in its chat interface or via its API so that it can read figures and graphs in PDFs, which is highly valuable in processing academic papers or other documents that contain visual information such as charts or figures.
+        </span>
+        <a href="#" class="expandable-toggle-minimal" data-target="contentClaude">[+]</a>
+    </div>
+</div>
+
+Table <a href="#costs">Table 2</a>  compares the cost of the models listed above---it has become industry practice for leading labs to offer two main models: a more expensive frontier model and a cheaper model well-suited for bulk data processing. xAI is only offering beta access to its models as of November 2024. OpenAI and Anthropic offer a 50% discount for batch processing that may be executed at a delay when their servers face a lower load; all three labs offer discounts for cached content. For Google DeepMind, the first 50 requests per day for its Pro model and 1500 requests per day for its Flash model are free, and using more than 128k tokens incurs double the cost displayed in the <span class="footnote" word="table.">
+        Up-to-date pricing information for the three labs is available at 
+        <a href="https://openai.com/api/pricing/" style="font-size: 90%; color: blue; text-decoration: underline;">
+            OpenAI Pricing
+        </a>, 
+        <a href="https://ai.google.dev/pricing" style="font-size: 90%; color: blue; text-decoration: underline;">
+            Google AI Pricing
+        </a>, and 
+        <a href="https://www.anthropic.com/pricing" style="font-size: 90%; color: blue; text-decoration: underline;">
+            Anthropic Pricing
+        </a>.
+    </span>
+
+<div class="table-container">
+    
+<table id="costs" class="centered-table caption-top table" data-quarto-postprocess="true" data-border="1" data-cellspacing="0" data-cellpadding="5">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Model (cost per 1M tokens)</th>
+<th data-quarto-table-cell-role="th">Input Cost</th>
+<th data-quarto-table-cell-role="th">Output Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OpenAI GPT-4o</td>
+<td>$2.5</td>
+<td>$10</td>
+</tr>
+<tr class="even">
+<td>OpenAI GPT-4o-mini</td>
+<td>$0.15</td>
+<td>$0.60</td>
+</tr>
+<tr class="odd">
+<td>Google DeepMind Gemini 1.5 Pro</td>
+<td>$1.25</td>
+<td>$5</td>
+</tr>
+<tr class="even">
+<td>Google DeepMind Gemini 1.5 Flash</td>
+<td>$0.075</td>
+<td>$0.30</td>
+</tr>
+<tr class="odd">
+<td>Anthropic Claude 3.5 Sonnet</td>
+<td>$3</td>
+<td>$15</td>
+</tr>
+<tr class="even">
+<td>Anthropic Claude 3.5 Haiku</td>
+<td>$1</td>
+<td>$5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<footer>
+    <small>
+        <span style="font-size: 90%; line-height: 1; display: inline-block; margin: 0; padding: 0;">
+            <b>Table 2</b>: Price comparison for input and output tokens across leading models. 
+            Source: compiled by author. 
+        </span>
+    </small>
+</footer>
+</section>
+<section id="leading-open-source-models" class="level2">
+<h2 class="anchored" data-anchor-id="leading-open-source-models">Leading Open-Source Models</h2>
+<p>The top LLM providers that release their models open source are listed in the last two rows of <a href="#table_overview">Table 1</a> Their models are freely available to download, use, modify, and distribute. This offers several benefits for economic research. Firstly, the transparency of open-source models allows researchers to examine the underlying architecture, enabling them to better understand the model’s structure. Secondly, open-source projects allow anybody to innovate upon the model. This can help accelerate the development of LLMs tailored to specific needs. Thirdly, if researchers have access to low-cost computing resources, they can leverage open-source models for their work without incurring financial costs. Fourthly, open-source models that are operated locally offer significant privacy benefits as sensitive data does not need to be channeled over the internet to be processed on the servers of proprietary model providers. Finally, open-source models allow for greater reproducibility, which is helpful for ensuring scientific integrity in research as it enables other researchers to verify and build upon the reported results. These benefits make open-source language models an attractive choice for researchers seeking to harness the power of natural language processing in their work.</p>
+<p>
+From an economic perspective, open-source models are highly beneficial as they freely distribute the economic social surplus created by LLMs and stimulate innovation <span class="reference" id="korinekvipra2024"></span>. On the downside, as open-source LLMs become more capable, they also pose growing safety <span class="footnote" word="risks">
+    For example, LlaMA has already allowed researchers to construct adversarial attacks that circumvent the safety restrictions of all the LLMs listed above <span class="reference" id="zoual2023adversarial"></span>. <span class="reference" id="seger2023opensourcing"></span> discuss the pros and cons of open-sourcing LLMs as well as intermediate solutions between proprietary and fully open-source models that may be desirable as LLMs become more capable and pose growing safety risks.
+</span>
+<span class="reference" id="anderljungal2023frontierAI" style="p">.  
+</span>
+</p>
+<p>
+<b>Meta's LlaMA 3.1</b> is currently the most powerful series of open source models, which have been downloaded more than 350,000 times so far. The most powerful publicly available model is currently Llama 3.1-405B which features 405B parameters. However, as of November 2024, LlaMA is transitioning to version 3.2, offering multi-modal versions with 11B and 90B parameters as well as text-only versions with 3B and 1B parameters, which can be operated on many devices. All available Llama models are also accessible on leading cloud computing platforms, including Microsoft Azure, AWS, and Hugging Face. NVIDIA released a fine-tuned version of Meta's 70B parameter model as Llama-3.1-Nemotron-70B-Instruct, which has obtained an LMSYS score of 1271 despite its smaller size.
+</p>
+
+<p>
+<b>Alibaba's Qwen 2.5</b> (short for Tongyi Qianwen, which translates to "Unified Thousand Questions") has made rapid progress and reached a spot in <a href="#table_overview">Table 1</a>  in Sept 2024, even though Alibaba, being located in China, is subject to export controls on cutting-edge GPU chips that are crucial for training LLMs. The Qwen 2.5 series consists of 100 open-source models with parameter sizes ranging from 0.5B to 72B, including multimodal models and excellent LLMs specialized in math and coding that reach state-of-the-art performance. 
+</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

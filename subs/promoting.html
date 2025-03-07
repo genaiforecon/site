@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Applications of LLMs – Generative AI for Economic Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fad5ab29a14bbe0a7a7d29177f3f13bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" type="text/css" href="expandable.css">
+<script src="expandable.js"></script>
+<script src="references1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Generative AI for Economic Research</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../get-started.html"> 
+<span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-new-developments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">New Developments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-new-developments">    
+        <li>
+    <a class="dropdown-item" href="../subs/overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/reasoning.html">
+ <span class="dropdown-text">Reasoning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/access.html">
+ <span class="dropdown-text">Access Modes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/search.html">
+ <span class="dropdown-text">Search</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/improvements.html">
+ <span class="dropdown-text">Technical Improvements</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/practical.html">
+ <span class="dropdown-text">Practical Applications</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-applications" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Applications</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-applications">    
+        <li>
+    <a class="dropdown-item" href="../applications.html">
+ <span class="dropdown-text">Summary</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/ideation.html">
+ <span class="dropdown-text">Ideation and Feedback</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/writing.html">
+ <span class="dropdown-text">Writing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/background.html">
+ <span class="dropdown-text">Background Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/coding.html">
+ <span class="dropdown-text">Coding</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/data.html">
+ <span class="dropdown-text">Data Analytics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/math.html">
+ <span class="dropdown-text">Mathematical Derivations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/promoting.html">
+ <span class="dropdown-text">Promoting Research</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../resources.html"> 
+<span class="menu-text">Further Resources</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/genaiforecon/site"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#promoting-research" id="toc-promoting-research" class="nav-link active" data-scroll-target="#promoting-research">Promoting Research</a>
+  <ul class="collapse">
+  <li><a href="#social-media-posts" id="toc-social-media-posts" class="nav-link" data-scroll-target="#social-media-posts">Social Media Posts</a></li>
+  <li><a href="#presentation-slides" id="toc-presentation-slides" class="nav-link" data-scroll-target="#presentation-slides">Presentation Slides</a></li>
+  <li><a href="#blog-posts" id="toc-blog-posts" class="nav-link" data-scroll-target="#blog-posts">Blog Posts</a></li>
+  <li><a href="#conducting-interview" id="toc-conducting-interview" class="nav-link" data-scroll-target="#conducting-interview">Conducting Interview</a></li>
+  <li><a href="#podcasts" id="toc-podcasts" class="nav-link" data-scroll-target="#podcasts">Podcasts</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Applications of LLMs</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="promoting-research" class="level1">
+<h1>Promoting Research</h1>
+<p>After having written a paper, the next step is to promote it. There are few areas in which LLMs have been as impactful as in marketing. This is particularly relevant for research papers, which are highly structured and information-dense self-contained pieces of knowledge—the current generation of LLMs has become capable of processing the content of entire research papers and are excellent at transforming that content into different formats, including formats that are conducive for promotion. Accordingly, there are several excellent use cases of LLMs for research promotion.</p>
+<section id="social-media-posts" class="level2">
+<h2 class="anchored" data-anchor-id="social-media-posts">Social Media Posts</h2>
+<span> 
+    For the following exercise, I uploaded the original working paper version of this paper <div class="reference" id="korinek23llm" style="p"></div> to GPT-4o and asked it to generate social media posts, in this particular example for X (formerly Twitter):
+</span>
+<div class="expandable-container">
+    <div>
+        <span class="prompt_start">
+            <b>Prompt:</b> Write a series of X posts to promote the attached paper. Use simple sentences and make them catchy. <b>[Attachment: w30957.pdf]</b>
+        </span>
+    </div>
+
+    <hr>
+
+    <div class="response_start"><b>Response (GPT-4o):</b></div>
+    <a href="#" class="expandable-toggle" data-target="content46">[+] click to expand</a>
+    <div id="content46" class="response_rest">
+        <ol>
+            <li><b>Exciting new possibilities!</b> My latest NBER paper explores 25 ways language models like ChatGPT can boost research in economics. From ideation to coding, LLMs are transforming our workflows! <i>#AI #EconResearch #LLM</i></li>
+            <li><b>Did you know?</b> Large language models are now capable of automating micro-tasks like data analysis, writing, and even mathematical derivations in economic research. Check out my paper for more insights! <i>#AIinEconomics #ProductivityBoost</i></li>
+            <li><b>Researchers, take note!</b> LLMs aren't just about writing—they can also help with background research, coding, and more. Discover 6 key areas where they can assist in my latest paper. <i>#CognitiveAutomation #AI #Economics</i></li>
+            <li><b>What’s the future of cognitive labor?</b> My paper dives into how LLMs could reshape the role of human economists, making us more efficient while raising new questions about the future of work. <i>#FutureOfWork #AIRevolution</i></li>
+            <li><b>Want to stay ahead in research?</b> Learn how to incorporate LLMs into your daily tasks and increase productivity. Don’t miss the insights in my NBER paper! <i>#Economics #AItools #GenerativeAI</i></li>
+        </ol>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <div>
+        <span class="prompt_start">
+            <b>Analysis:</b> The LLM adapts to the optimal format for different social media platforms. Upon request, it can also incorporate suitable emoticons or links.
+        </span>
+    </div>
+</div>
+
+</section>
+<section id="presentation-slides" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-slides">Presentation Slides</h2>
+<p>Successful promotion leads to invitations to present your paper. The latest generation of LLMs released in 2024 also have the capability to draft slides based on a research paper. This is a difficult exercise because it requires that the model exhibits detailed recall across a long paper.</p>
+<div class="expandable-container">
+    <div>
+        <span class="prompt_start">
+            <b>Prompt:</b> Can you create a 20-slide deck for the attached economic research paper?<b>[Attachment: w30957.pdf]</b>
+        </span>
+    </div>
+
+    <hr>
+
+    <div class="response_start"><b>Response (Claude 3):</b></div>
+    <a href="#" class="expandable-toggle" data-target="content47">[+] click to expand</a>
+    <div id="content47" class="response_rest">
+        <p>Here is a 20-slide deck summarizing the key points from the research paper <i>"Language Models and Cognitive Automation for Economic Research"</i> by Anton Korinek:</p>
+
+        <p><b>Slide 1: Title Slide</b></p>
+        <ul>
+            <li>Paper title: "Language Models and Cognitive Automation for Economic Research"</li>
+            <li>Author: Anton Korinek</li>
+        </ul>
+
+        <p><b>Slide 2: Introduction</b></p>
+        <ul>
+            <li>Large language models (LLMs) can revolutionize economic research</li>
+            <li>Describes 25 use cases of LLMs across 6 domains</li>
+            <li>Provides instructions and examples for each use case</li>
+            <li>Classifies usefulness of capabilities from experimental to highly useful</li>
+        </ul>
+
+        <p><b>Slide 3: What are LLMs?</b></p>
+        <ul>
+            <li>LLMs are foundation models</li>
+            <li>Large deep learning models pre-trained on lots of data</li>
+            <li>Form abstract representations and world model from training data</li>
+            <li>Capabilities improve according to predictable scaling laws as compute and data increase</li>
+            <li>Many capabilities are emergent, arising suddenly at specific thresholds</li>
+        </ul>
+
+        <p><i>[Slides 4–18 omitted for space reasons]</i></p>
+
+        <p><b>Slide 19: Importance of Economic Ideas</b></p>
+        <ul>
+            <li>Economists can translate human concepts to analytic forms for AIs</li>
+            <li>Economic ideas will influence worldview of future AI systems</li>
+            <li>"Soon or late, it is ideas which are dangerous for good or evil" (Keynes)</li>
+        </ul>
+
+        <p><b>Slide 20: Conclusion</b></p>
+        <ul>
+            <li>LLMs are becoming useful for automating research tasks</li>
+            <li>Humans still have comparative advantage in generating research for now</li>
+            <li>Important to adopt LLMs to boost productivity</li>
+            <li>Prepare for potentially transformative long-term impacts</li>
+        </ul>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b>Analysis:</b> The generated slides provide an excellent first draft on which to build. Notably impressive in the latest version of Claude used in the example was its ability to recall detailed information from the paper, successfully generating 20 content-rich slides without noticeable memory lapses. Additionally, the LLM effectively segmented the material, distributing it appropriately across the requested number of slides.</span>
+    </div>
+</div>
+
+</section>
+<section id="blog-posts" class="level2">
+<h2 class="anchored" data-anchor-id="blog-posts">Blog Posts</h2>
+<span>
+One of the most effective ways of promoting research papers to a broader audience is to write blog posts that convey their message in simple terms. This is an easy task for modern LLMs---users can upload the underlying paper to provide the content, and the LLM can create a blog post to the user's specifications. The following is an example that builds on the prompt that generated with Anthropic Prompt Generator to draft a summary of the first version of this paper <div class="reference" id="korinek23llm" style="p"></div>.
+</span>
+<div class="expandable-container">
+    <div>
+        <span class="prompt_start">
+            <b>Prompt:</b> Your task is to help draft a blog post for the Brookings Institution based on an economics research paper. The full text of the paper is attached. The target audience for this blog post are economic researchers.<b>[Attachment: w30957.pdf]</b> <br> 
+            <p></p>
+            <p><i>[continuing with the prompt generated in Chat (reference omitted)]</i></p>
+        </span>
+    </div>
+
+    <hr>
+
+    <div class="response_start"><b>Response (GPT-4o):</b> <b><i>How AI Is Reshaping Economic Research: Exploring Language Models for Cognitive Automation</i></b></div>
+    <a href="#" class="expandable-toggle" data-target="content48">[+] click to expand</a>
+    <div id="content48" class="response_rest">
+        <p>Recent advances in artificial intelligence have brought transformative tools like large language models (LLMs) into the toolkit of economic researchers. These models, such as OpenAI's ChatGPT, are not just conversational agents; they represent a major leap in how cognitive tasks can be automated, promising to significantly alter the landscape of research in economics. In his recent paper, <i>"Language Models and Cognitive Automation for Economic Research,"</i> Anton Korinek lays out 25 ways that these models can be leveraged, offering insights that are highly relevant for economic researchers looking to understand the potential impact of AI on their field.</p>
+
+        <p><b>Six Domains of LLM Utility in Economic Research</b></p>
+
+        <p>Korinek's paper categorizes the applications of LLMs into six key domains. These applications span from idea generation to coding, offering a comprehensive toolkit for researchers.</p>
+
+        <ul>
+            <li><b>Ideation and Writing:</b> LLMs can assist researchers from the very start of a project, helping brainstorm ideas, generate counterarguments, and refine initial drafts.</li>
+        </ul>
+
+        <p><i>[Remainder omitted for space reasons]</i></p>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <div>
+        <span class="prompt_start">
+            <b>Analysis:</b> The draft blog posts generated by the current generation of frontier LLMs are generally well done and, after some editing, save significant time compared to having to write such a post from scratch.
+        </span>
+    </div>
+</div>
+
+</section>
+<section id="conducting-interview" class="level2">
+<h2 class="anchored" data-anchor-id="conducting-interview">Conducting Interview</h2>
+<p>Large language models (LLMs) have emerged as powerful tools for conducting and assisting with interviews related to academic research. Their capabilities in this domain can be leveraged in two primary ways: answering interview questions and generating insightful questions for various audiences.</p>
+<p>LLMs can be used to answer interview questions on behalf of researchers, using their published work as a knowledge base. This approach is particularly useful when researchers are preparing responses for written interviews or need assistance in formulating clear and concise answers. For example, using a research paper as a reference, an LLM could provide detailed answers to questions about the impact of AI on economic research.</p>
+<div class="expandable-container">
+    <div>
+        <span class="prompt_start">
+            <b>Prompt:</b> I received an interview request on the impact of AI on economic research from The Chronicle of Higher Education. Can you help me draft responses based on the attached paper of mine? I am pasting the questions here:
+        </span>
+        <span class="prompt_rest inline-expand" id="content49_prompt">
+            <ol>
+                <li>You describe 25 use cases for large language models (LLMs) in economic research across six domains. Which of these capabilities do you think has the most potential to revolutionize how economists conduct research in the near term?</li>
+                <li>In the paper, you speculate on the longer-term implications of cognitive automation via LLMs for economic research. Could you elaborate on how you envision the role of human economists evolving as LLMs become more advanced?</li>
+                <li>You mention that LLMs can be used to simulate human subjects for research. What are the ethical considerations and potential pitfalls of this approach, and how might it change the landscape of behavioral economics?</li>
+                <li>The paper touches on the limitations of current LLMs, particularly in areas like mathematical derivations. How do you see these limitations being addressed in future iterations of LLMs, and what implications might this have for theoretical economics?</li>
+                <li>You draw parallels between the rise of LLMs and Garry Kasparov's observations about chess computers. How do you think economists should prepare for a future where AI systems might produce superior economic models? What skills should economists focus on developing?</li>
+            </ol>
+            <p><b>[Attachment: w30957.pdf]</b></p>
+        </span>
+        <a href="#" class="expandable-toggle" data-target="content49_prompt">[+] click to expand</a>
+    </div>
+
+    <hr>
+
+    <div class="response_start"><b>Response (Claude 3.5 Sonnet):</b></div>
+    <a href="#" class="expandable-toggle" data-target="content49">[+] click to expand</a>
+    <div id="content49" class="response_rest">
+        <p>Certainly! I'd be happy to help you draft responses based on your paper. I'll provide suggested responses for each question, drawing directly from the content and ideas presented in your paper.</p>
+
+        <p><b>1. You describe 25 use cases for large language models (LLMs) in economic research across six domains. Which of these capabilities do you think has the most potential to revolutionize how economists conduct research in the near term?</b></p>
+
+        <p><i>Suggested response:</i> "Based on my analysis, I believe the capabilities related to writing and data analysis have the most potential to revolutionize economic research in the near term. LLMs are particularly adept at tasks like synthesizing text, editing, and generating catchy titles or summaries. These capabilities can significantly streamline the writing process, allowing researchers to focus more on ideas and analysis rather than the mechanics of writing.</p>
+
+        <p>In terms of data analysis, LLMs show great promise in extracting data from text, reformatting data, and classifying and scoring text. These capabilities can automate many time-consuming tasks in data preparation and initial analysis, potentially accelerating the research process.</p>
+
+        <p>It's worth noting that I've rated several capabilities in these domains as 'highly useful' in my paper, indicating that incorporating them into research workflows can already save significant time and boost productivity. As these tools continue to improve, I expect their impact on how we conduct research to grow substantially."</p>
+
+        <p><b>2. In the paper, you speculate on the longer-term implications of cognitive automation via LLMs for economic research. Could you elaborate on how you envision the role of human economists evolving as LLMs become more advanced?</b></p>
+
+        <p><i>Suggested response:</i> "As LLMs become more advanced, I anticipate a shift in the role of human economists. In the medium term, I expect LLM-based assistants and tutors to become increasingly useful for generating content that makes up research papers. Human researchers will likely focus more on their comparative advantages—posing questions, suggesting directions for obtaining answers, discriminating which parts of the produced content are useful, editing, and providing feedback.</p>
+
+        <p>In essence, the role may evolve to be more akin to that of an advisor or research manager. Economists will likely spend more time organizing research efforts, coordinating teams, and procuring data sources.</p>
+
+        <p>However, in the longer term, as LLMs continue to advance, the need for human inputs, edits, and feedback may diminish. We may find ourselves increasingly just rubber-stamping the output produced by ever-more advanced LLMs. Ultimately, it's possible that sufficiently advanced AI systems may be able to produce and articulate superior economic models, potentially making the cognitive work of human economists redundant.</p>
+
+        <p>This potential future underscores the importance of economists focusing on tasks that leverage uniquely human traits and adapting to work alongside increasingly capable AI systems."</p>
+
+        <p><i>[Remainder omitted for space reasons]</i></p>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <div>
+        <span class="prompt_start">
+            <b>Analysis:</b> The LLM provided well-crafted responses that accurately reflect the perspective provided in the attached background paper from February 2023. In its response to the first question, it even employed the classical human trick of punting the exact question (asking for <em>one</em> specific capability) and focusing on a more general question that summarizes several categories of use cases.
+        </span>
+        <span class="prompt_rest_minimal inline-expand" id="analysis_expand_50">
+            <br><br>
+            This approach works well because the LLM can draw on the paper it was provided to generate insightful and relevant responses that align with the researcher's work and the interviewer's audience. The model maintains consistency with the original research while adapting the language to suit an interview format, making complex ideas more accessible to a broader audience.
+        </span>
+        <a href="#" class="expandable-toggle-minimal" data-target="analysis_expand_50">[+]</a>
+    </div>
+</div>
+<p>LLMs can also be employed to generate thought-provoking and relevant interview questions. This capability can be tailored to different target audiences, enhancing the impact and reach of research promotion efforts. For instance:</p>
+<div class="expandable-container">
+    <div>
+        <span class="prompt_start">
+            <b>Prompt:</b> I am a journalist working for the Chronicle of Higher Education. I enjoyed reading the attached paper and scheduled an interview with the author. What would be five good questions to ask him based on the content of the paper?
+        </span>
+        <span class="prompt_rest inline-expand" id="content51_prompt">
+            <p><b>[Attachment: w30957.pdf]</b></p>
+        </span>
+        <a href="#" class="expandable-toggle" data-target="content51_prompt">[+] click to expand</a>
+    </div>
+
+    <hr>
+
+    <div class="response_start"><b>Response (Claude 3.5 Sonnet):</b> Based on the content of the paper, here are five good questions you could ask the author in your interview:</div>
+    <a href="#" class="expandable-toggle" data-target="content51">[+] click to expand</a>
+    <div id="content51" class="response_rest">
+        <ol>
+            <li>You describe 25 use cases for large language models (LLMs) in economic research across six domains. Which of these capabilities do you think has the most potential to revolutionize how economists conduct research in the near term?</li>
+            <li>In the paper, you speculate on the longer-term implications of cognitive automation via LLMs for economic research. Could you elaborate on how you envision the role of human economists evolving as LLMs become more advanced?</li>
+            <li>You mention that LLMs can be used to simulate human subjects for research. What are the ethical considerations and potential pitfalls of this approach, and how might it change the landscape of behavioral economics?</li>
+            <li>The paper touches on the limitations of current LLMs, particularly in areas like mathematical derivations. How do you see these limitations being addressed in future iterations of LLMs, and what implications might this have for theoretical economics?</li>
+            <li>You draw parallels between the rise of LLMs and Garry Kasparov's observations about chess computers. How do you think economists should prepare for a future where AI systems might produce superior economic models? What skills should economists focus on developing?</li>
+        </ol>
+
+        <p>These questions cover a range of topics from the paper, including specific capabilities of LLMs, their potential impact on the field of economics, ethical considerations, current limitations, and future implications for the profession. They should provide a good basis for an in-depth discussion with the author about the key themes of his paper.</p>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b>Analysis:</b> The questions—coincidentally the ones answered in the previous chat—are thoughtfully selected, effectively covering the most critical components of the paper.</span>
+    </div>
+</div>
+
+<p>The capability of generating insightful questions is useful not only for journalists but also for economists for two key reasons.</p>
+
+<div class="expandable-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start_minimal">First, economists often find themselves in situations where they are asked to suggest questions that would lead to interesting conversations targeted at specific audiences.</span>
+        <span class="prompt_rest_minimal inline-expand" id="content16"> Journalists, podcast hosts, and moderators at panel events regularly turn to their interviewees or speakers for such input. LLMs can be an invaluable tool in these scenarios, helping economists quickly generate relevant and engaging questions tailored to different audiences. For instance, the questions generated in the previous example would be markedly different from those aimed at a business newspaper, a policy think tank, or a general interest magazine. By leveraging LLMs, economists can effectively shape the discourse around their research and ensure it resonates with diverse audiences.</span>
+        <a href="#" class="expandable-toggle-minimal" data-target="content16">[+]</a>
+    </div>
+</div>
+<div class="expandable-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start_minimal">Second, LLMs allow researchers to prepare thoroughly for high-stakes interviews.</span>
+        <span class="prompt_rest_minimal inline-expand" id="content17"> In such cases, the prompt could be modified to generate challenging questions that the researcher might face, for example, by adding a phrase like "What would be some challenging questions that I may face?" This approach can help to anticipate difficult questions (especially if the interviewers themselves turn to LLMs) and prepare thoughtful responses in advance.</span>
+        <a href="#" class="expandable-toggle-minimal" data-target="content17">[+]</a>
+    </div>
+</div>
+</section>
+<section id="podcasts" class="level2">
+<h2 class="anchored" data-anchor-id="podcasts">Podcasts</h2>
+<p>Perhaps the most impressive tools when it comes to promoting research papers is the ability of Google’s NotebookLM to generate `deep dive’ podcasts. The system works by first generating an outline of the source material and identifying linkeages, revising that outline, producing a detailed version of the script, performing a round of critique and the associated modifications, and then adding disfluencies to make the conversation sound more natural.</p>
+<!-- Expandable Container -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b>Prompt:</b> Generate deep dive conversation. <b>[Attachment: w30957.pdf]</b></span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"><b>Response (NotebookLM):</b></div>
+    <a href="#" class="expandable-toggle" data-target="response18">[+] click to expand</a>
+    <div id="response18" class="response_rest">
+        <p><b>Male host:</b> Okay, so you're interested in the economics of AI...</p>
+        <p><b>Female host:</b> Yeah.</p>
+        <p><b>Male host:</b> ...specifically, all the buzz about these large language models, LLMs.</p>
+        <p><b>Female host:</b> <em>mmhmm</em></p>
+        <p><b>Male host:</b> You're in the right place, because we're doing a deep dive into how these things actually work, what they could do for economists like you right now, and what the future might hold.</p>
+        <p><b>Female host:</b> And it's a future that's changing rapidly. It seems like every day there's some new breakthrough in what these models can do.</p>
+        <p><b>Male host:</b> Well, let's unpack that a bit.</p>
+        <p><b>Female host:</b> <em>mhm</em></p>
+        <p><b>Male host:</b> Imagine having a research assistant who can not only brew you a perfect cup of coffee, but also write code in multiple languages,...</p>
+        <p><b>Female host:</b> Yeah.</p>
+        <p><b>Male host:</b> ...summarize dense academic papers in seconds, and even brainstorm potential downsides to your economic model. That's the promise of LLMs, right?</p>
+        <p><b>Female host:</b> Yep.</p>
+        <p><b>Male host:</b> But how do they actually work? Is it really some kind of artificial intelligence magic?</p>
+        <p><b>Female host:</b> It's not magic, but it's pretty close. Think of LLMs as incredibly complex neural networks, but instead of crunching numbers, they're trained on massive data sets of text. We're talking about everything from academic journals and books to code repositories and even social media posts—they process all of that information, learning patterns, relationships between concepts, and even different writing styles... <em>[Remainder omitted for space reasons.]</em></p>
+        <p><em>[Transcription using otter.ai. Full audio version available at <a href="https://t.ly/GrC0d" style="color:blue;text-decoration:underline;">https://t.ly/GrC0d</a>.]</em></p>
+    </div>
+</div>
+
+<div class="expandable-container-minimal">
+    <div>
+        <span class="prompt_start">
+            <b>Analysis:</b> The generated podcast lays out the material in the paper in an engaging conversational format while covering the content in a clear and insightful manner targeted at laypeople. One interesting observation is that the male host mistakenly attributes physical capabilities to the AI research assistant ("...who can not only brew you a perfect cup of coffee...").
+        </span>
+    </div>
+</div>
+
+<p>Since October 2024, NotebookLM allows users to customize the generated podcasts with specific instructions. For researchers, a useful prompt may look like this: “Your audience are PhD economists who are eager to learn how to effectively use LLMs in their research work.”</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

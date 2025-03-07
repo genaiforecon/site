@@ -1,0 +1,101 @@
+.expandable-container {
+    border: 2px solid #8A56A4;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.expandable-minimal {
+    /*border: 2px solid #FF6044;
+    padding: 15px;
+    border-radius: 5px;*/
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.expandable-container-minimal {
+    border: 2px solid #447cdd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* Prompt should expand inline */
+.prompt_start_minimal {
+    display: inline;
+}
+
+.prompt_rest_minimal {
+    display: none;
+    /* Initially hidden */
+}
+
+.prompt_start {
+    font-size: 16px;
+    color: black;
+    display: inline;
+}
+
+.prompt_rest {
+    font-size: 16px;
+    color: black;
+    display: none;
+    /* Initially hidden */
+}
+
+/* Response should expand as a block */
+.response_start {
+    font-size: 16px;
+    color: black;
+}
+
+.response_rest {
+    font-size: 16px;
+    color: black;
+    display: none;
+    /* Initially hidden */
+}
+
+/* Ensure content appears when expanded */
+.inline-expand {
+    display: none;
+    /* Initially hidden */
+}
+
+.expandable-content {
+    display: none;
+    /* Initially hidden */
+}
+
+/* Button Styling */
+.expandable-toggle {
+    color: #8A56A4;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.expandable-toggle2 {
+    color: #447cdd;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.expandable-toggle-minimal {
+    color: #FF6044;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 5px;
+}

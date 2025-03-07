@@ -1,0 +1,39 @@
+.title {
+    font-size: 2.0em;
+    /* Adjust as needed */
+    color: #447cdd;
+    /* Optional: Change color */
+    font-weight: bold;
+    /* Optional: Make it bold */
+    text-align: center;
+    /* Optional: Center the title */
+}
+.reference {
+    position: relative;
+    cursor: pointer;
+    text-decoration: underline;
+    /* Underlines the text */
+    color: rgba(0, 0, 0, 0.8);
+    /* Slightly lighter than pure black */
+}
+/* Tooltip styling */
+.reference-tooltip {
+    position: absolute;
+    top: 100%;
+    /* positions below the reference */
+    left: 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 450px;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 0.65em;
+    line-height: 1.4;
+    margin-top: 5px;
+}
+
+/* Show dropdown menu on hover */
+.navbar .dropdown:hover>.dropdown-menu {
+    display: block;
+}

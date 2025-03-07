@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Advances at the LLM Frontier – Generative AI for Economic Research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fad5ab29a14bbe0a7a7d29177f3f13bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" type="text/css" href="expandable.css">
+<script src="expandable.js"></script>
+<script src="references1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Generative AI for Economic Research</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../get-started.html"> 
+<span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-new-developments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">New Developments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-new-developments">    
+        <li>
+    <a class="dropdown-item" href="../subs/overview.html">
+ <span class="dropdown-text">Overview</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/reasoning.html">
+ <span class="dropdown-text">Reasoning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/access.html">
+ <span class="dropdown-text">Access Modes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/search.html">
+ <span class="dropdown-text">Search</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/improvements.html">
+ <span class="dropdown-text">Technical Improvements</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/practical.html">
+ <span class="dropdown-text">Practical Applications</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-applications" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Applications</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-applications">    
+        <li>
+    <a class="dropdown-item" href="../applications.html">
+ <span class="dropdown-text">Summary</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/ideation.html">
+ <span class="dropdown-text">Ideation and Feedback</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/writing.html">
+ <span class="dropdown-text">Writing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/background.html">
+ <span class="dropdown-text">Background Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/coding.html">
+ <span class="dropdown-text">Coding</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/data.html">
+ <span class="dropdown-text">Data Analytics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/math.html">
+ <span class="dropdown-text">Mathematical Derivations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../subs/promoting.html">
+ <span class="dropdown-text">Promoting Research</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../resources.html"> 
+<span class="menu-text">Further Resources</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/genaiforecon/site"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#access-modes-to-llms" id="toc-access-modes-to-llms" class="nav-link active" data-scroll-target="#access-modes-to-llms">Access Modes to LLMs</a>
+  <ul class="collapse">
+  <li><a href="#workspaces-for-interactive-llm-collaboration" id="toc-workspaces-for-interactive-llm-collaboration" class="nav-link" data-scroll-target="#workspaces-for-interactive-llm-collaboration">Workspaces for Interactive LLM Collaboration</a></li>
+  <li><a href="#real-time-voice-assistants" id="toc-real-time-voice-assistants" class="nav-link" data-scroll-target="#real-time-voice-assistants">Real-Time Voice Assistants</a></li>
+  <li><a href="#autonomous-computer-use" id="toc-autonomous-computer-use" class="nav-link" data-scroll-target="#autonomous-computer-use">Autonomous Computer Use</a></li>
+  <li><a href="#llm-based-research-tools" id="toc-llm-based-research-tools" class="nav-link" data-scroll-target="#llm-based-research-tools">LLM-based Research Tools</a></li>
+  <li><a href="#traditional-text-based-interaction" id="toc-traditional-text-based-interaction" class="nav-link" data-scroll-target="#traditional-text-based-interaction">Traditional Text-Based Interaction</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Advances at the LLM Frontier</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="access-modes-to-llms" class="level1">
+<h1>Access Modes to LLMs</h1>
+<p>Several new access modes to frontier LLMs have emerged over the course of 2024—in addition to the traditional text-based interaction modes. The most notable are workspaces for interactive LLM collaboration, real-time voice assistants, and the emerging autonomous “computer use” capabilities of LLMs.</p>
+<section id="workspaces-for-interactive-llm-collaboration" class="level2">
+<h2 class="anchored" data-anchor-id="workspaces-for-interactive-llm-collaboration">Workspaces for Interactive LLM Collaboration</h2>
+<p>Enabled by longer context windows and greater speeds, LLM providers have introduced innovative workspace environments in recent months that allow users to interactively collaborate with LLMs on content, as summarized in <a href="#table_overview">Table 3</a>.</p>
+<div class="table-container">
+    
+<table id="workspaces" class="centered-table caption-top table" data-quarto-postprocess="true" data-border="1" data-cellspacing="0" data-cellpadding="5">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Workspace</th>
+<th data-quarto-table-cell-role="th">Key Features</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Anthropic Claude Artifacts</strong></td>
+<td class="left-align">• Dedicated output window<br>
+• Supports text, code, flowcharts, SVG graphics, websites, dashboards<br>
+• Real-time refinement and modification<br>
+• Sharing and remixing capabilities</td>
+</tr>
+<tr class="even">
+<td><strong>ChatGPT Canvas</strong></td>
+<td class="left-align">• Separate collaboration window<br>
+• Text editing and coding capabilities<br>
+• Options for edits, length adjustment, reading level changes<br>
+• Code review and porting features</td>
+</tr>
+<tr class="odd">
+<td><strong>OpenAI Advanced Data Analysis</strong></td>
+<td class="left-align">• Data upload and analysis<br>
+• Visualization capabilities<br>
+• Python code execution in backend<br>
+• Error correction and refinement</td>
+</tr>
+<tr class="even">
+<td><strong>Claude Analysis Tool</strong></td>
+<td class="left-align">• Fast exploratory data analysis<br>
+• Interactive visualizations with real-time adjustments</td>
+</tr>
+<tr class="odd">
+<td><strong>Google NotebookLM</strong></td>
+<td class="left-align">• Document upload for research grounding<br>
+• Quick summarization and questioning<br>
+• Citation and quote provision<br>
+• "Deep dive conversation" podcast generation</td>
+</tr>
+<tr class="even">
+<td><strong>Microsoft Copilot</strong></td>
+<td class="left-align">• Integration with Microsoft 365 products<br>
+• Assistance in Word, Excel, PowerPoint, etc.<br>
+• Data analysis, formula construction</td>
+</tr>
+<tr class="odd">
+<td><strong>Google Gemini for Workspace</strong></td>
+<td class="left-align">• Integration with Google's office suite<br>
+• Assistance in Docs, Sheets, Slides, Gmail</td>
+</tr>
+<tr class="even">
+<td><strong>Cursor AI Code Editor</strong></td>
+<td class="left-align">• AI-assisted coding<br>
+• Code suggestions and queries<br>
+• Optimization recommendations<br>
+• Debugging assistance<br>
+• Real-time collaboration</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<footer>
+    <small>
+        <span style="font-size: 90%; line-height: 1; display: inline-block; margin: 0; padding: 0;">
+            <b>Table 3:</b> Overview of interactive workspaces designed for LLM collaboration.  
+            Source: compiled by the author.  
+        </span>
+    </small>
+</footer>
+
+<style>
+    /* Ensure bullet points and text are left-aligned in table cells */
+    .left-align {
+        text-align: left;
+        padding-left: 10px;
+    }
+</style>
+
+<p>
+Anthropic led the way with the introduction of Artifacts for Claude in June 2024 (left panel in <a href="#fig:workspaces"> Figure 4</a>, followed by OpenAI's launch of Canvas for ChatGPT in October 2024 (right panel). Concurrently, developers of office package such as Microsoft and Google have increasingly integrated LLM capabilities into their existing workspaces. The resulting products allow users to move beyond the limitations of traditional chat interfaces and to interact with AI assistants in a more dynamic and collaborative environment for content creation, editing, and interaction. These features represent a significant leap forward in human-AI collaboration, providing dedicated spaces for users to credit, edit, and build upon AI-generated content in real-time. 
+</p>
+<div class="figure" id="fig:workspaces">
+    <div style="text-align: center;">
+        <div style="display: flex; justify-content: center; gap: 2%;">
+            <div>
+                <img src="interact_claude.png" alt="Claude Artifact" style="width:  100%;">
+                <p class="caption"><b>Claude Artifact</b></p>
+            </div>
+            <div>
+                <img src="interact_chatgpt.png" alt="ChatGPT Canvas" style="width: 100%;">
+                <p class="caption"><b>ChatGPT Canvas</b></p>
+            </div>
+        </div>
+        <p class="caption">
+            <b>Figure <span id="fig:workspaces">4</span></b>: Anthropic's and OpenAI's workspaces for interactive LLM collaboration <br>
+            <small>Source: compiled by author.</small>
+        </p>
+    </div>
+</div>
+
+<p><strong>Artificacts in Claude</strong> can be activated by clicking at the user button at the bottom left and choosing “Settings”, which opens a menu that lets the user check the option “Enable artifacts”. When Claude finds it useful, or when the user explicitly asks for an artifact, the chatbot opens a dedicated output window to the right of the chat interface where the user can instantly view and interact with the generated content. This feature supported a range of different outputs, including text (as in <a href="#fig:workspaces"> Figure 4</a>,), code snippets, flowcharts, SVG graphics, websites, and interactive dashboards, which are all worth trying out. The user can interact with the artifact by asking the chatbot to refine or modify the output in line with her instructions, allowing for rapid prototyping and iteration. The feature also allows users to publish and share artifacts with other users who can subsequently remix them, enabling easy collaboration.</p>
+<p><strong>Canvas in ChatGPT</strong> can be activated for paying users by selecting “GPT-4o with canvas” from the model selection menu at the top left of the screen. It is based on a similar concept as Claude Artifacts, opening in a separate window that allows users and ChatGPT to collaborate on writing and coding projects, but also offers some unique features that make it more powerful. The interface allows users to edit the content in the canvas like in a text editor or to select specific paragraphs and provide instructions on how to change the text or ask questions about it. Moreover, for text, the button at the bottom right of the canvas (<a href="#fig:workspaces">Figure 4</a>) includes options to ask the LLM for suggested edits, to adjust the length of the content (shorter or longer) and the reading level (from kindergarten to graduate level), or to add a “final polish” For code, the button includes options to review and comment on the code, to port it to a different language, to fix bugs, and to add comments or logs—all while keeping the entire content in mind.</p>
+<p><strong>Advanced Data Analysis in ChatGPT</strong> has been available in a rudimentary form since mid-2023 (originally named “Code Interpreter”; see later examples with <a href="coding.html#content27"> simulating the Solow model </a> and <a href="data.html"> plotting stock prices </a>) but has been significantly improved after the release of GPT-4o in 2024, turning it into a collaborative workspace where the main focus is on interacting with the data. It allows users to upload data in a variety of formats, for example, spreadsheets, and analyze, visualize and process the data in a multitude of ways. On the backend, ChatGPT writes and executes python code to perform the necessary operations, implying that a wide range of analyses can be performed, limited only by the “intelligence” of the LLM that is writing the code. Simple routine tasks are usually no problem. For more complicated forms of analysis, Advanced Data Analysis may make errors but is frequently able to correct them automatically in response to python error messages or the user’s requests.</p>
+<p><strong>Claude Analysis Tool</strong> is Anthropic’s response to ChatGPT’s Advanced Data Analysis, using JavaScript rather than python as its underlying engine. Released in October 2024, it allows Claude to visualize and explore data in an elegant, intuitive, and interactive manner. This makes the tool most valuable for quick data explorations and visualizations. For example, I created <a href="overview.html#fig:gpt4_trends">Figure 1</a> using the Claude Analysis tool. However, it is less suitable for specialized econometric analysis than ChatGPT’s data analysis as it lacks the wide range of python libraries offering econometric tools.</p>
+<p><strong>NotebookLM by Google</strong> represents a more specialized approach to AI-assisted research, facilitating background research and literature reviews, leveraging the long context window of Google’s Gemini models. Its key feature is to allow users to upload a wide range of relevant research papers or documents that ground the system AI in a specific corner of the literature and enables them to quickly summarize uploaded documents, ask targeted questions about the content, and brainstorm on the materials provided. Importantly for academic work, NotebookLM provides citations and relevant quotes from original sources during exchanges, supporting the rigorous documentation required in research.</p>
+<p>In September 2024, NotebookLM introduced a groundbreaking feature called Deep dive conversation, which allows users to generate podcasts based on the provided materials. These podcasts feature an insightful conversation between two virtual agents who explain the essence of the material in simple and clear terms for non-experts, narrated in a highly engaging manner. For research use, this is one of the most impressive capabilities that have emerged in recent months. It offers a novel way to disseminate complex economic research to a broader audience, potentially increasing the impact and accessibility of economic studies. The tool is available for free at <a href="https://notebook.google.com" target="_blank">notebook.google.com</a>.</p>
+<span>
+Below is the beginning of a sample podcast generated based on uploading
+the original version of this research paper <span class="reference" id="korinek23GenAI" style="p"></span>
+</span>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b>Prompt:</b> Generate deep dive conversation. <b>[Attachment: w30957.pdf]</b> </span>
+  
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"><b>Response (NotebookLM):</b></div>
+    <a href="#" class="expandable-toggle" data-target="content3">[+] click to expand</a>
+    <div id="content3" class="response_rest">
+        <p><b>Male host:</b> Okay, so you're interested in the economics of AI...</p>
+        <p><b>Female host:</b> Yeah.</p>
+        <p><b>Male host:</b> ...specifically, all the buzz about these large language models, LLMs.</p>
+        <p><b>Female host:</b> <em>mmhmm</em></p>
+        <p><b>Male host:</b> You're in the right place, because we're doing a deep dive into how these things actually work, what they could do for economists like you right now, and what the future might hold.</p>
+        <p><b>Female host:</b> And it's a future that's changing rapidly. It seems like every day there's some new breakthrough in what these models can do.</p>
+        <p><b>Male host:</b> Well, let's unpack that a bit.</p>
+        <p><b>Female host:</b> <em>mhm</em></p>
+        <p><b>Male host:</b> Imagine having a research assistant who can not only brew you a perfect cup of coffee, but also write code in multiple languages, ...</p>
+        <p><b>Female host:</b> Yeah.</p>
+        <p><b>Male host:</b> ...summarize dense academic papers in seconds, and even brainstorm potential downsides to your economic model. That's the promise of LLMs, right?</p>
+        <p><b>Female host:</b> Yep.</p>
+        <p><b>Male host:</b> But how do they actually work? Is it really some kind of artificial intelligence magic?</p>
+        <p><b>Female host:</b> It's not magic, but it's pretty close. Think of LLMs as incredibly complex neural networks, but instead of crunching numbers, they're trained on massive data sets of text. We're talking about everything from academic journals and books to code repositories and even social media posts—they process all of that information, learning patterns, relationships between concepts, and even different writing styles...</p>
+        <p><b>[Remainder omitted for space reasons.]</b></p>
+
+        <p><b>Transcription:</b> Using Otter.ai. Full audio version available at  
+            <a href="https://t.ly/GrC0d" target="_blank">https://t.ly/GrC0d</a>.
+        </p>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b>Analysis:</b> The generated podcast lays out the material in the paper in an engaging conversational format while covering the content in a clear and insightful manner targeted at laypeople. One interesting observation is that the male host mistakenly attributes physical capabilities to an AI research assistant ("...who can not only brew you a perfect cup of coffee...")</span>
+    </div>
+</div>
+<p>Since October 2024, NotebookLM allows users to customize the generated podcasts with specific instructions. For researchers, a useful prompt may look like this: “Your audience are PhD economists who are eager to learn how to effectively use LLMs in their research work”.</p>
+<p>Whereas the workspace tools described so far are based on the strategy of creating a new interface from scratch, like Artifacts or Canvas, in order to facilitate interactions with LLMs, the following tools follow the opposite strategy—they incorporate LLMs or similar systems to automatically perform functions in existing workspaces. Given the wide user base of the associated products, this integration will likely lead to widespread distribution of the benefits of these tools:</p>
+<p><strong>Copilot in Microsoft 365</strong> integrates LLM capabilities into Microsoft Office products for an add-on subscription fee of $20/month. Copilot is based on OpenAI’s latest GPT-4o model (and o1 in a pilot) as well as Microsoft-internal LLMs and can serve as an assistant and tutor for a wide range of office tasks. Use cases in Microsoft Word include creating drafts, including by brainstorming or referencing existing files; transforming text according to criteria like length, tone, formality, or intended reader; and summarizing and asking questions about content. In Microsoft Excel, use cases including extracting, converting, or reformatting data (use cases in data analysis); constructing, editing, and explaining formulas, even complicated ones; creating tables and charts to analyze and visualize data. Use cases in Microsoft PowerPoint include brainstorming, outlining and creating slides; enhancing content with images, design elements, and interactivity; summarizing and organizing presentations to highlight key points and action items; and even anticipating the most likely audience questions. Copilot is also available for all other programs that are part of the Microsoft 365 package, including Outlook, Teams, OneNote, as well as for Microsoft Edge.</p>
+<p><strong>Gemini for Google Workspace</strong> uses Google DeepMind’s Gemini series to offer a set of similar capabilities for Google’s office suite, including in Google Docs for writing documents, Google Spreadsheets, and Google Slides for presentations, as well as in the Gmail service.</p>
+<p>
+<b> Cursor -- The AI Code Editor </b> is a tool that is specialized in AI-assisted coding, making it particularly relevant for researchers engaged in computational work, data analysis, and econometric modeling. Cursor takes advantage of the long context windows and greater speeds of the latest LLMs to take the code suggestions pioneered by Github Copilot to new heights. It integrates AI assistance into all aspects of the coding process, including code suggestions, queries about code, edits to selected code according to instructions, recommendations for code optimization, and help for debugging---all while keeping the entire code base of a project in its context window to recognize interdependencies. It also offers support real-time collaboration, facilitating teamwork on large-scale projects. Cursor is built on (or, more specifically, forked from) the popular VS Code environment and can employ multiple different LLMs, including GPT-4o, o1, and Claude 3.5 Sonnet. <span class="reference" id="pengal23" style="p"></span> report that GitHub Copilot delivered productivity gains of 126% for coding back in 2023. Based on user reports, the gains from Cursor may be even larger.
+</p>
+<p>In a similar vein, the LaTeX editor Overleaf offers a tool called Writefull that is specialized in producing and editing LaTeX code, including tables and equations.</p>
+<p><em>Additional Tools for Providing LLMs with Content</em> – One of the challenges in using the current generation of frontier LLMs is that they are excellent at processing content, but it is difficult or time-intensive for the user to supply the most relevant context for a work task. Anthropic and OpenAI have developed two slightly different solutions to this problem:</p>
+<p>
+Anthropic introduced <i> Projects for Claude </i> in June 2024, which allow users to upload background documents that are relevant for multiple chat interactions and to organize and bring together related chats and artifacts in one place. For example, I have created a project on "Generative AI for Economic Research", to which I added the earlier versions of this paper <span class="reference" id="korinek23GenAI" style="p"></span> and the project-specific custom instructions "Help me draft content for my research project on 'Generative AI for Economic Research' in a similar style to the earlier versions and in a format that is helpful for economic researchers". When I use Claude to work on content related to this paper, I start a new chat that is part of this project, automatically providing Claude with all the relevant content. Projects help ground the LLM's outputs in relevant context and background knowledge to effectively mitigate the "cold start" "problem when opening a new chat. They can also be shared across teams, enabling more collaborative workflows.
+</p>
+<p>OpenAI allows users to create <em>Custom GPTs</em> that enhance GPT-4o’s functionality by adding specialized background knowledge, interactive tools, and customized instructions tailored to specific instructions, ranging from writing to economic analysis tools. Users can also create their own custom GPTs by clicking “Explore GPTs” at the top left and the “Create” button, and going through the ensuing process step by step. The resulting custom GPTs can be used privately or shared publicly in a GPT Store. Custom GPTs created by others can also be located in the “Explore GPTs” menu at the top left, which offers users the ability to browse, install, and use a wide range of extensions and applications that are developed by third-party creators. Two custom GPTs that economists may find useful are (1) Wolfram, which provides access to computation, math, curated knowledge and real-time data from Wolfram Alpha, the maker of Mathematica, and (2) Consensus, which offers an AI-based research assistant that searches 200m academic papers to provide science-based answers with citations to the underlying articles.</p>
+</section>
+<section id="real-time-voice-assistants" class="level2">
+<h2 class="anchored" data-anchor-id="real-time-voice-assistants">Real-Time Voice Assistants</h2>
+<p>A significant innovation in access modes is a new generation of real-time voice assistants. Earlier voice assistants transcribed a user’s spoken language into text that was fed into an LLM; after processing the request, the LLM’s response was translated into audio again. By contrast, the new generation natively processes spoken text with all its nuances in tone and emotional expression and responds accordingly. Moreover, it also allows users to jump in and interrupt the flow mid-sentence in a way that allows for a more natural and fluid conversation. Some users report that they keep the ChatGPT app open on their phone in voice mode throughout certain work tasks, or even throughout the day, so that they can easily draw on the their digital assistant at any point without raising a finger.</p>
+<p>The following are the leading interactive voice assistants of this new generation:</p>
+
+<ul>
+    <li>
+        <b>OpenAI's Advanced Voice Mode</b> is a feature of its ChatGPT mobile app that offers perhaps the most natural interaction, using the GPT-4o  
+        <span class="footnote" word="model.">
+            At the time of writing, Advanced Voice Mode is not yet available to ChatGPT Plus or Free users in the European Union.
+        </span> 
+        In a version that is not yet publicly released, the model can also use the mobile phone's camera to include a video view of the user or their surroundings in its interactions. A desktop app to use Advanced Voice Mode that can see and respond to the information on a user's desktop is also in the works.
+    </li>
+    
+    <li>
+        <b>Google's Gemini Live</b> also allows for fluid voice conversations with users based on the Gemini series of models. Google is working on integrating Gemini Live with apps across the Google ecosystem, including Gmail, Calendar, Docs, YouTube, and Maps, to turn it into a powerful productivity assistant. 
+        Moreover, it is also working on a "Project Astra" (<b>A</b>dvanced <b>S</b>eeing and <b>T</b>alking <b>R</b>esponsive <b>A</b>gent) that will incorporate vision features in Gemini Live.
+    </li>
+
+    <li>
+        <b>Apple Intelligence voice assistant</b> is part of the latest round of operating system updates across all Apple devices. It introduces an assistant that integrates seamlessly with Apple's ecosystem, handling general queries, managing tasks, and interacting fluidly across apps like Mail, Calendar, and Notes. 
+        For more complex or nuanced inquiries, Apple Intelligence selectively leverages ChatGPT, adding depth to its responses when necessary. Although Apple's proprietary AI system provides a smooth, integrated experience, some users report that it lacks the advanced capabilities of standalone ChatGPT, particularly in handling complex, multi-layered questions.
+    </li>
+
+    <li>
+        <b>Standard Intelligence's Hertz-dev</b> is an open-source voice assistant solution, accessible at 
+        <a href="https://si.inc/hertz-dev/" target="_blank">https://si.inc/hertz-dev/</a>. 
+        Their models provide a versatile, real-time voice assistant that facilitates natural spoken interactions with LLMs. 
+        Its efficient compression and ultra-low latency make it ideal for real-time applications, while its audio generation capabilities enable nuanced, responsive conversations. 
+        As an open-source platform, Hertz-dev offers high customizability, allowing researchers to tailor it to their specific needs, such as automated interviews or integration with other research tools for a seamless, interactive experience.
+    </li>
+</ul>
+
+<p>To combine voice interactions and traditional text-based interactions, both OpenAI’s and Google’s models provide users with transcripts of their voice interactions which can be copied and pasted for further processing and for written research products.</p>
+</section>
+<section id="autonomous-computer-use" class="level2">
+<h2 class="anchored" data-anchor-id="autonomous-computer-use">Autonomous Computer Use</h2>
+<p>The perhaps most breathtaking recent advance has been an autonomous desktop assistant, simply labeled “Computer use,” which was released by Anthropic in beta mode in October 2024. The system enables Anthropic’s most cutting-edge model, Claude 3.5 Sonnet, to directly interact with your computer’s interface, allowing it to see your computer screen and giving it access to virtually any software application that can be installed on a computer.</p>
+<p>This implies that the model can control your cursor, click buttons, type into text fields, and even navigate through software interfaces—as if another intelligent being were sitting at your computer. Although still preliminary, Computer Use gives LLMs the ability to automate a wide range of tasks that require multiple applications or complex workflows on a computer, ranging from organizing files and updating software to conducting online research. In effect, this development gives LLMs nearly unlimited access to external tools, enabling them to seamlessly interact across platforms and applications without manual intervention. Anthropic’s Claude with “Computer use” can currently be accessed through Anthropic’s API, which enables users to programmatically direct Claude to perform any desired operations on a computer. An instructive demo video is available at <a href="https://www.youtube.com/watch?v=ODaHJzOyVCQ" target="_blank">https://www.youtube.com/watch?v=ODaHJzOyVCQ</a>.</p>
+Google's Project JARVIS (acronym for "Just A Rather Very Intelligent System," which is inspired by the AI assistant in the <em>Iron Man</em> franchise) is an experimental AI assistant that operates within Google's Chrome browser environment, where it can perform web-based tasks such as filling out forms, navigating websites, and making online purchases. Currently, Jarvis is in the experimental phase and expected to be available more broadly in December 2024. Its functions are limited to browser-based tasks, unlike Anthropic's Claude, which can interact with any software installed on a computer. This makes Jarvis highly useful for automating tasks online but less versatile for complex workflows that require access to local applications.
+
+For researchers, autonomous desktop assistants offer significant potential. They can automate standard research workflows, such as organizing datasets, managing references, and conducting data analyses in econometric packages. Additionally, for bulk operations like systematically collecting information from multiple sources, running batch simulations, or automating data entry, an LLM with desktop control can handle repetitive tasks with ease and efficiency. However, these capabilities also introduce risks, including grave security risks and privacy concerns, as such systems obtain full control over the user's device or <span class="footnote" word="browser.">
+    For example, Anthropic notes that Claude with computer use sometimes erroneously follows instructions that it happens to read on open webpages or in images, thereby overriding the instructions that it has been given by its user. 
+    For this reason, they recommend that computer use is run on a dedicated virtual machine or container with minimal access privileges to prevent system attacks or accidents.
+</span> Researchers must weigh these risks carefully, ensuring that sensitive data and systems are protected when taking advantage of the automation benefits these tools can offer.
+
+</section>
+<section id="llm-based-research-tools" class="level2">
+<h2 class="anchored" data-anchor-id="llm-based-research-tools">LLM-based Research Tools</h2>
+<p>There are also a growing number of dedicated research tools that are based on LLMs and facilitate or automate research tasks. I will highlight two:</p>
+<span>
+<span class="reference" id="Horton2024EDSL"></span> develop an open-source Python package to facilitate research on LLM-based simulations and surveys. In a dig at the term "stochastic parrot," which was used to critique LLMs, they have developed <em>Expected Parrot Domain-Specific Language</em> (EDSL), which takes advantage of LLMs' ability to generate a wide range of context-specific data that closely mirror human behavior and social dynamics. 
+
+EDSL allows researchers to define a set of <em>Questions</em> that are answered by <em>AI Agents</em> simulated by defined <em>Models</em> to produce a set of <em>Results</em>, which can be grouped into <em>Surveys</em> and contextualized with <em>Scenarios</em> (capitalization used to refer to specific objects in EDSL).
+
+This approach enables economists to efficiently manage large-scale tasks with intricate dependencies, agent behaviors, and model parameters without getting bogged down in programming details. As a result, EDSL offers a powerful toolkit to conduct LLM-based simulations of detailed surveys and experiments, label large datasets, augment existing data, and generate synthetic data. 
+
+Researchers can design AI agents with specific traits, utilize multiple language models simultaneously, and incorporate complex logic and agent memory into their surveys. EDSL's built-in analysis and visualization tools, integrated into the Python ecosystem, allow for both seamless execution and interpretation of research outcomes.
+</span>
+
+<p>
+<span class="reference" id="lu2024aiscientist"></span> at the Japanese startup sakana.ai introduce an automated framework for end-to-end scientific paper generation in computer science based on LLMs. The AI Scientist, as they call it, is designed to autonomously generate research ideas, implement experiments by running code, analyze results, and produce complete academic papers. While currently limited to a specific area within computer science in which progress can be made simply by writing code (machine learning algorithms and architectures), this approach demonstrates the potential for LLMs to assist across the research process.
+</p>
+<p>The AI Scientist operates by generating novel research ideas, writing code to implement experiments, executing those experiments, and then drafting a full scientific paper based on the results. The system incorporates an automated reviewing process to evaluate the generated papers, mimicking the peer review system in academic publishing. Sample papers are available at <a href="https://sakana.ai/ai-scientist/" target="_blank">https://sakana.ai/ai-scientist/</a>.</p>
+<p>Although the current quality of the generated papers is mediocre, lacking the full originality, depth and rigor of research authored by human experts, the framework points towards the potential future capabilities of LLMs in scientific research. It serves as a proof of concept for how LLMs could be leveraged to augment and accelerate the scientific process in the future. As LLM capabilities continue to advance, especially as they make breakthroughs in reasoning (see <a href="../subs/reasoning.html">the reasoning page</a>), systems like the AI Scientist may evolve into powerful tools for idea generation and the execution of research even in fields like economics.</p>
+</section>
+<section id="traditional-text-based-interaction" class="level2">
+<h2 class="anchored" data-anchor-id="traditional-text-based-interaction">Traditional Text-Based Interaction</h2>
+<p>The following summarizes the more traditional access modes for LLMs that have been available for the past two years:</p>
+<ul>
+    <li>
+        <b>Web-based Chatbots:</b> The models in <a href="overview.html#table_overview">See Summary Table</a>
+ are all accessible as chatbots under the URLs listed in the last column. 
+        The chatbot interface, pioneered by Anthropic but first publicly released by OpenAI in the form of ChatGPT in Nov. 2022, allows users to prompt LLMs as assistants or tutors. 
+        Most of the examples documented in the use cases below illustrate this mode of interaction, which has been the most popular way of accessing LLMs over the past two years. 
+        However, I anticipate that LLM use will gradually shift towards the interactive workspaces described in <a href="../subs/access.html">the access model page</a>. The free versions of the listed chatbots typically come with usage restrictions or provide access to less powerful model versions. 
+        In my experience, this makes it worthwhile to pay the $20 monthly subscription fee that is typically required for full access to the frontier models listed in the table. All of these chatbots are also available via apps on Apple and Android mobile phones. 
+        Moreover, OpenAI and Anthropic have also developed desktop apps for their chatbots that are available for download at 
+        <a href="https://openai.com/chatgpt/download/" target="_blank">https://openai.com/chatgpt/download/</a> 
+        and <a href="https://claude.ai/download" target="_blank">https://claude.ai/download</a> respectively, 
+        and, once installed, can be conveniently accessed via the keyboard shortcuts <b>Ctrl+Space</b> and <b>Ctrl+Alt+Space</b>.
+    </li>
+    
+    <li>
+        <b>Web-based Experimentation Platforms:</b> All major LLM providers also offer web-based interfaces that offer greater functionality and flexibility than chatbots but do not require programming knowledge.
+        These platforms, such as 
+        <a href="https://playground.openai.com" target="_blank">OpenAI Playground</a>, 
+        <a href="https://aistudio.google.com" target="_blank">Google AI Studio</a>, and 
+        <a href="https://console.anthropic.com" target="_blank">Anthropic Console</a>, 
+        allow users to experiment with different model settings, like temperature and top-p sampling, and provide more control over the input and output formats compared to chatbots. 
+        Such experimentation platforms are particularly useful for exploring the capabilities of LLMs, testing prompts, and fine-tuning models for specific tasks.
+    </li>
+
+    <li>
+        <b>Application Programming Interfaces (APIs):</b> For the maximum level of customization and integration, the listed models are also accessible through APIs, 
+        which allow programmers to integrate LLMs directly into their own software applications. 
+        This enables a wide range of more advanced and customized use cases, such as automating repetitive tasks or analyzing large datasets using natural language processing techniques. 
+        APIs provide more flexibility and control compared to the above two options and can be employed on a pay-per-use basis, 
+        but they also require a higher level of technical expertise to use effectively. 
+        
+        Accessing LLMs through APIs typically involves signing up for an API key from the model provider 
+        (which can be thought of as a credit card for LLM tokens), installing a client library in the programming language of choice, 
+        and writing code to interact with the API endpoints. 
+        
+        While this process may be more complex than using a chatbot, it unlocks the full potential of LLMs for those with the necessary programming skills. 
+        The replication package for this paper demonstrates how to use APIs to automatically query LLMs.
+    </li>
+
+    <li>
+        <b>Locally Operating LLMs:</b> Open-source models allow researchers to run LLMs on their own computers, 
+        offering advantages such as data privacy, cost-effectiveness, customization, and offline accessibility.
+        The computational resource requirements imply that only small models can be executed at a reasonable speed on desktop computers. 
+        However, advances in computational capacity as well as rapid efficiency gains of LLMs that allow greater capabilities of smaller models 
+        are rapidly making the local use of LLMs more attractive. Two solutions that make it particularly easy to deploy LLMs locally are:
+        
+        <ul>
+            <li>
+                <a href="https://lmstudio.ai/" target="_blank"><b>LM Studio</b></a> 
+                allows users to download and run a range of open-source LLMs, including VLMs, on their personal computer or server.
+            </li>
+            <li>
+                <a href="https://github.com/Mozilla-Ocho/llamafile" target="_blank"><b>llamafile</b></a> 
+                makes it possible to download LLMs in a single file and run them on a wide range of computer systems.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p><em>Centralized Hubs for LLM Interaction and Experimentation</em>– A useful website with a user-friendly chat interface that offers access to all leading LLMs is<br>
+<a href="https://poe.com" target="_blank"><b>https://poe.com</b></a>.</p>
+<p>Similarly, a website that offers users a web-based experimentation platform with access to a wide range of different models is<br>
+<a href="https://nat.dev/" target="_blank"><b>https://nat.dev/</b></a>.</p>
+<p><em>Prompting Guides for Text-based Access</em> – Although it is useful for everyone to gain experience interacting with LLMs through their own experimentation and learning-by-doing, most leading model providers now also offer public documents that describes strategies for how to prompt LLMs. The following is a list of such guides:</p>
+<ul>
+    <li>
+        <a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank">
+            https://platform.openai.com/docs/guides/prompt-engineering
+        </a>
+    </li>
+    <li>
+        <a href="https://ai.google.dev/gemini-api/docs/prompting-intro" target="_blank">
+            https://ai.google.dev/gemini-api/docs/prompting-intro
+        </a> 
+        and an example of a research assistant at 
+        <a href="https://aistudio.google.com/app/prompts/research-assistant" target="_blank">
+            https://aistudio.google.com/app/prompts/research-assistant
+        </a>
+    </li>
+    <li>
+        <a href="https://docs.anthropic.com/claude/docs/intro-to-prompting" target="_blank">
+            https://docs.anthropic.com/claude/docs/intro-to-prompting
+        </a> 
+        and an associated prompt library at 
+        <a href="https://docs.anthropic.com/en/prompt-library/library" target="_blank">
+            https://docs.anthropic.com/en/prompt-library/library
+        </a>
+    </li>
+    <li>
+        <a href="https://llama.meta.com/get-started/#prompting" target="_blank">
+            https://llama.meta.com/get-started/#prompting
+        </a>
+    </li>
+</ul>
+
+<p>
+    Anthropic also offers a "prompt generator" that helps users to optimize the prompts that they employ for querying LLMs through the 
+    <a href="https://console.anthropic.com/dashboard" target="_blank">Anthropic Console Dashboard</a> 
+    (click "Generate a Prompt"). This tool converts basic instructions in written language describing a user's intent into a more complex 
+    and specific set of instructions that induce LLMs to generate higher-quality output. Naturally, the user can edit and adjust the 
+    generated instructions before use to ensure that they capture their intent as well as possible.
+</p>
+
+<p>
+    I illustrate this using the following example. Throughout the remainder of this section, I will present all examples generated by 
+    LLMs in boxes, with the prompt in the header and the LLM's generated response in the body of the box.
+</p>
+<!-- First Expandable Box -->
+<div class="expandable-container">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b>Prompt (Anthropic Prompt Generator):</b> I have written an economics paper and would like to create a draft of a blog for Brookings.</span>
+    </div>
+
+    <hr>
+
+    <!-- BLOCK EXPAND RESPONSE -->
+    <div class="response_start"><b>Response:</b></div>
+    <a href="#" class="expandable-toggle" data-target="content4">[+] click to expand</a>
+    <div id="content4" class="response_rest">
+        <p>Your task is to help draft a blog post for the Brookings Institution based on an economics research paper. Here is the full text of the paper:</p>
+
+        <pre>&lt;paper&gt;
+{{PAPER}}
+&lt;/paper&gt;
+        </pre>
+
+        <p>The target audience for this blog post is:</p>
+
+        <pre>&lt;audience&gt;
+{{AUDIENCE}}
+&lt;/audience&gt;
+        </pre>
+
+        <p>First, carefully read through the entire paper, taking notes on the key points, main findings, and implications in a <code>&lt;scratchpad&gt;</code> section.</p>
+
+        <p>Next, write a short outline for the blog post in a <code>&lt;outline&gt;</code> section.
+           Keep the target audience in mind as you decide what to focus on and how to present the information.</p>
+
+        <p>Then, using your outline as a guide, write out the full draft of the blog post in a <code>&lt;blog_post_draft&gt;</code> section. Remember to:</p>
+
+        <ul>
+            <li>Use clear, engaging language that will be easily understood by the target audience.</li>
+            <li>Incorporate relevant examples, anecdotes, or analogies where appropriate to make the post more relatable and interesting.</li>
+            <li>Avoid copying word-for-word from the original paper. Put the key concepts into your own words.</li>
+            <li>Focus on the implications and "so what" of the research rather than getting too in-the-weeds with technical details.</li>
+        </ul>
+
+        <p>After you finish the draft, review it to make sure it covers the most important and interesting points from the paper in a way that will resonate with the target Brookings audience. Make any final tweaks before submitting your draft.</p>
+    </div>
+</div>
+<div class="expandable-container-minimal">
+    <!-- INLINE EXPAND PROMPT -->
+    <div>
+        <span class="prompt_start"><b>Analysis:</b> The generated prompt provides a remarkable level of detail that employs several cutting-edge prompting techniques to obtain the best possible results.</span>
+        <span class="prompt_rest inline-expand" id="contentAnalysis3">
+            It asks the model to start by taking notes in a "scratchpad" section, which induces the model to synthesize the main lessons of the text. Then it asks the model to prepare an outline, which induces the model to generate a plan. Only after these steps does the prompt ask the model to write a draft of the text. 
+
+            The prompt also leaves two locations for users to insert the paper in question and to define the audience. I simply substituted these by writing "The full text of the paper is attached" and inserting "policymakers" as the target audience. 
+
+            The prompt generated useful results on all three of the leading LLMs that would save considerable time in such a project, although the generated blog post was not quite up to the depth and quality of a think tank like Brookings.
+            <span class="footnote" word="I asked Anthropic Prompt Generator">
+                I asked Anthropic Prompt Generator to create prompts for blog posts for several different outlets. For some reason, asking for a blog targeted at Brookings gave rise to a higher-quality prompt than asking for any other outlet I attempted. My best explanation is that the model internalizes that Brookings is known for its high-quality analysis. (Disclaimer: The author is a non-resident fellow at Brookings.)
+            </span>
+        </span>
+        <a href="#" class="expandable-toggle-minimal" data-target="contentAnalysis3">[+]</a>
+    </div>
+</div>
+<span class="reference" id="bsharat2024principled"></span> systematically study 26 different guiding principles for prompting leading LLMs and offer prompting advice based on a systematic evaluation of their effectiveness. Curiously, they find that strategies such as (fictitiously) offering LLMs a tip or threatening a penalty improve performance. 
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
